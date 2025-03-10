@@ -24,6 +24,7 @@ import Search2 from './src/screens/main/search2';
 import BookDetails from './src/screens/main/bookDetails';
 import Reader from './src/screens/main/reader';
 import Category from './src/screens/main/category';
+import { BookmarkContextProvider } from './store/bookmarkContextProvider';
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -103,12 +104,13 @@ if(isLoading){
 export default function App() {
 
   return (
-    
+    <BookmarkContextProvider>
     <AuthProvider>
     <NavigationContainer>
       <StackNavigation></StackNavigation>
    </NavigationContainer>
     </AuthProvider>
+    </BookmarkContextProvider>
   );
 }
 
