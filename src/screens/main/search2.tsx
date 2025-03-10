@@ -17,11 +17,9 @@ export default function Search2({navigation}:any) {
     const [keyword, setKeyword] = useState('')
     const [books, setBooks] = useState<Books[]>([])
     const [loading, setLoading] = useState<boolean>()
-
     function addSearch(){
       setKeyword(query)
       setLoading(true)
-      console.log(query)
     }
 
 
@@ -33,7 +31,7 @@ export default function Search2({navigation}:any) {
           console.log(data?.at(0)?.value)
           
           axios 
-          .get('https://www.googleapis.com/books/v1/volumes?q='+keyword+'&key='+process.env.GOOGLE_BOOKS_API)
+          .get('https://www.googleapis.com/books/v1/volumes?q='+keyword)
           .then((res)=>(
             
            setBooks(res.data.items)))
