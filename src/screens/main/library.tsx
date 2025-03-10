@@ -13,6 +13,7 @@ export type bookSliderParamList={
 export default function Library({navigation}:any) {
   const {addItem,savedItems} = useContext(BookmarkContext)
   const {user} = useAuth()
+//   const [savedItems,setSavedItems] = useState<any>()
   const uid = user&&user.id
   useEffect(()=>{
     const getLibrary = async() =>{
@@ -21,10 +22,11 @@ export default function Library({navigation}:any) {
       .eq('uid',uid)
       .order('created_at',{ascending:false})
       addItem(data)
+      console.log(savedItems)
+
 }
 getLibrary()
   },[])
-
     return (
       
       <View style={{flex:1,backgroundColor:colors.background}}>
