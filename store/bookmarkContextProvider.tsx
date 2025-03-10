@@ -1,18 +1,15 @@
 import React, { createContext, useState, ReactNode } from 'react';
 
-// Define the type for the context state
 interface SavedItemsContextType {
   savedItems: [];
   addItem: (item: any) => void;
 }
 
-// Initialize the context with default values
 export const BookmarkContext = createContext<SavedItemsContextType>({
   savedItems: [],
   addItem: () => {},
 });
 
-// Define the type for the provider props
 interface SavedItemsProviderProps {
   children: ReactNode;
 }
