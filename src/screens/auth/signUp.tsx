@@ -46,27 +46,6 @@ export default function SignUp({navigation}:any) {
   };
 
 
-  //firebase auth
-  
-  // const onRegister = async (values: FormikValues) => {
-  //   try {
-  //     if (!values.email || !values.password) {
-  //       throw new Error('Email and password are required');
-  //     }
-      
-  //     await auth().createUserWithEmailAndPassword(values.email, values.password);
-  //     navigation.navigate('SignIn', { email: values.email,message:'Verify your email and then login!' });
-  //     console.log('User Registered successfully!');
-  //   } catch (error: any) {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       setError('That email address is already in use!');
-  //     }
-  //     if (error.code === 'auth/invalid-email') {
-  //       setError('That email address is invalid!');
-  //     }
-  //   }
-  // };
-  
   return (
     <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always" contentContainerStyle={{flex:1,justifyContent:'center'}}>
     <View style={styles.container}>
