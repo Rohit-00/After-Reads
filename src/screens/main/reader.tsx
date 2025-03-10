@@ -2,7 +2,7 @@ import {  StyleSheet, View, Pressable , TouchableOpacity,ScrollView} from 'react
 import { useState, useEffect, lazy, Suspense } from 'react';
 import Icon2 from '@expo/vector-icons/Ionicons';
 import {GoogleGenerativeAI} from '@google/generative-ai'
-const genAI = new GoogleGenerativeAI("AIzaSyDCaHCUIBYGgFS8XT02eLzK6euVBiSL7u0");
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API!);
 import Markdown from 'react-native-markdown-display'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from '../../../utils/supabase';

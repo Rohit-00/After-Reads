@@ -33,7 +33,7 @@ export default function Search2({navigation}:any) {
           console.log(data?.at(0)?.value)
           
           axios 
-          .get('https://www.googleapis.com/books/v1/volumes?q='+keyword+'&key='+'AIzaSyDWamESByI1s9Mrmkwf9ZXVqoixaAhjjoY')
+          .get('https://www.googleapis.com/books/v1/volumes?q='+keyword+'&key='+process.env.GOOGLE_BOOKS_API)
           .then((res)=>(
             
            setBooks(res.data.items)))
