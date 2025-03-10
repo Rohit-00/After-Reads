@@ -3,8 +3,7 @@ import { Text, StyleSheet, View, TextInput, TouchableOpacity,ScrollView } from '
 
 import * as Yup from 'yup';
 import { Formik, FormikValues } from 'formik';
-
-import { authService } from '../../../utils/supabase';
+import { useAuth } from '../../../store/authContext';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -13,57 +12,25 @@ const SignupSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Password must be at least 6 characters')
     .required('Password is required'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords must match')
-    .required('Confirm password is required'),
 });
 
 
 export default function SignIn({navigation}:any) {
-
+  const { signIn, isLoading,  signOut } = useAuth();
   const [error,setError] = useState('')
  
   const onRegister = async (values: FormikValues) => {
     try {
-      const {data,error} = await authService.signIn(
+      const {data,error} = await signIn(
         values.email,
         values.password,
       )
-
       if (error) throw error;
-
-      navigation.navigate('SignIn', { 
-        email: values.email,
-        message: 'Please check your email for verification link!'
-      });
-      
     } catch (error: any) {
       setError(error.message);
     }
   };
 
-
-  //firebase auth
-  
-  // const onRegister = async (values: FormikValues) => {
-  //   try {
-  //     if (!values.email || !values.password) {
-  //       throw new Error('Email and password are required');
-  //     }
-      
-  //     await auth().createUserWithEmailAndPassword(values.email, values.password);
-  //     navigation.navigate('SignIn', { email: values.email,message:'Verify your email and then login!' });
-  //     console.log('User Registered successfully!');
-  //   } catch (error: any) {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       setError('That email address is already in use!');
-  //     }
-  //     if (error.code === 'auth/invalid-email') {
-  //       setError('That email address is invalid!');
-  //     }
-  //   }
-  // };
-  
   return (
     <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always" contentContainerStyle={{flex:1,justifyContent:'center'}}>
     <View style={styles.container}>
@@ -104,24 +71,12 @@ export default function SignIn({navigation}:any) {
               <Text style={styles.errorText}>{errors.password}</Text>
             }
 
-            <TextInput
-              style={[styles.input, touched.confirmPassword && errors.confirmPassword && styles.inputError]}
-              placeholder="Confirm Password"
-              secureTextEntry
-              autoCapitalize="none"
-              onChangeText={handleChange('confirmPassword')}
-              onBlur={handleBlur('confirmPassword')}
-              value={values.confirmPassword}
-            />
-            {touched.confirmPassword && errors.confirmPassword && 
-              <Text style={styles.errorText}>{errors.confirmPassword}</Text>
-            }
-            <TouchableOpacity><Text style={styles.button}  onPress={()=>handleSubmit()}>Sign Up</Text></TouchableOpacity>
+            <TouchableOpacity><Text style={styles.button}  onPress={()=>handleSubmit()}>Sign In</Text></TouchableOpacity>
             </View>
         )}
       </Formik>
       
-      <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}><Text style={{textDecorationLine:'underline'}}>Already have an account? Sign In</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={{textDecorationLine:'underline'}}>Already have an account? Sign In</Text></TouchableOpacity>
       </View>
       <View style={styles.horizontalLineContainer}>
         <View style={styles.line} />
