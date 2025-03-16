@@ -4,6 +4,7 @@ import { supabase } from '../../utils/supabase';
 
 import { colors } from '../../utils/colors';
 import { truncateText } from '../../utils/helpers';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 export default function BookRecommendations({heading,navigation}:any){
     const [datad, setData] = useState<any>()
@@ -25,7 +26,14 @@ export default function BookRecommendations({heading,navigation}:any){
     {loading?
     
       <View>
-        <Text>Loading...</Text>
+        <SkeletonPlaceholder>
+          <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+            <View style={{width:130,height:200,borderRadius:6,margin:5}}/>
+            <View style={{width:130,height:200,borderRadius:6,margin:5}}/>
+            <View style={{width:130,height:200,borderRadius:6,margin:5}}/>
+            <View style={{width:130,height:200,borderRadius:6,margin:5}}/>
+            </View>
+        </SkeletonPlaceholder>
       </View>
     
     

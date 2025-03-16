@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Text, StyleSheet, View, TouchableOpacity, Image} from 'react-native'
 import { supabase } from '../../utils/supabase'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 
 
 export default function Banner() {
+  const [loading, setLoading] = useState(true)
   const [data,setData] = useState<any>([{
     qoute:'hello',
     author:'Rohit',
@@ -17,6 +19,7 @@ export default function Banner() {
         .from('Banner')
         .select('*')
         setData(data)
+        setLoading(false)
       }catch(error){
         console.log(error)
       }
@@ -25,7 +28,15 @@ export default function Banner() {
     getBook()
   })
     return (
+      <>
+      {loading?
+      <SkeletonPlaceholder>
+                  <View style={{width:'90%',height:200,borderRadius:6,margin:20}}/>
+    
+      </SkeletonPlaceholder>
+      :
       <View style={styles.bannerBackground}>
+        
         <View style={styles.bannerText}>
           <Text style={styles.bannerHeading}>Today's Read</Text>
           <Text style={styles.bannerBody}>{data[0].qoute}</Text>
@@ -40,6 +51,8 @@ export default function Banner() {
           />
         </View>
       </View>
+}
+      </>
     )
   }
 

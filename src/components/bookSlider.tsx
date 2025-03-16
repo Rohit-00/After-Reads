@@ -5,7 +5,7 @@ import { colors } from '../../utils/colors';
 
 
 export default function BookSlider({heading,data,navigation}:any){
-  
+
   return (
     <View>
     <View style={styles.container}>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         width: 150,
         margin:30,
         marginBottom:0,
-        height: 200, // Adjust the height as needed
+        height: 200, 
         resizeMode: 'cover',
         borderRadius:6,
         borderWidth:0.5,
