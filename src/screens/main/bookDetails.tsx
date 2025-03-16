@@ -6,6 +6,8 @@ import { supabase } from '../../../utils/supabase';
 import { BookmarkContext } from '../../../store/bookmarkContextProvider';
 import Markdown from 'react-native-markdown-display';
 import { useAuth } from '../../../store/authContext';
+import ImageColors from 'react-native-image-colors';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 const languages = [{id:1,lang:'Arabic'},
   {id:2,lang:'Bengali'},
@@ -87,13 +89,29 @@ export default function BookDetails({route,navigation}:any){
     const id = route.params.id
     const uid = user!.id
 
-
     //Call google books api for book high res cover
     useEffect(()=>{
       
       const fetchBooks=async()=>{
+          try{
+                const result = await ImageColors.getColors(thumbnail, {
+                  fallback: '#fff',
+                  cache:true,
+                  key:thumbnail
+                })
+          
+                if (result.platform === 'android') {
+                  setColors(result.average);
+                  
+                  
+                } else if (result.platform === 'ios') {
+                  setColors(result.primary);
+                  
+                }
+              }
+                catch(error){console.log(error)}
         try {
-          const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${id}?key=AIzaSyDWamESByI1s9Mrmkwf9ZXVqoixaAhjjoY`);
+          const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${id}`);
           const coverUrl = response.data.volumeInfo.imageLinks?.medium;
           setBookCover(coverUrl);
 
@@ -108,7 +126,6 @@ export default function BookDetails({route,navigation}:any){
       if(data?.length===0){
         setIsSaved(false)
         setLoading(false)
-        console.log('added to read later')       
         }
       else{
         setIsSaved(true)
@@ -143,7 +160,6 @@ else{
   .delete()
   .eq('uid',uid)
   .eq('bookId',id)
-  console.log('deleted from db')
   
 }
     }
@@ -153,31 +169,42 @@ else{
           .eq('uid',uid)
           .order('created_at',{ascending:false})
           addItem(data)
-          console.log('Fetched and stored')
     }
     return (
       
       <View>
         {loading?
-        <View>
-        {/* <View  style={{backgroundColor:'white', height:360, alignItems:'center', justifyContent:'center'}}>
-        <Skeleton h={250} width={200}/>
-        </View>
-        <View style={{marginHorizontal:10}}>
-        <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-        <View style={{flexDirection:'row'}}>
-        <Skeleton h={12} width={12} margin={2} borderRadius={25} />
-        <Skeleton h={12} width={12} margin={2} borderRadius={25} />
-        <Skeleton h={12} width={12} margin={2} borderRadius={25} />
-        
-        </View>
-        <Skeleton h={12} width={24} margin={2} borderRadius={25} />
-        
-        </View>
-        <Skeleton.Text h={12} width={'100%'}  borderRadius={25} lines={17} />
-        </View> */}
-        <Text>Loading...</Text>
-        </View>
+        <>
+          <SkeletonPlaceholder>
+            <View style={{flexDirection:'column',height:'100%'}}>
+            <View style={{height:370,width:'100%'}}/>
+          
+              <View style={{flexDirection:'row',marginHorizontal:10,width:'100%',alignItems:'center',justifyContent:'space-between',marginTop:10}}>
+                <View style={{flexDirection:'row',gap:4}}>
+                <View style={{height:50,width:50,borderRadius:100}}/>
+                <View style={{height:50,width:50,borderRadius:100}}/>
+                <View style={{height:50,width:50,borderRadius:100}}/>
+                </View>
+                <View style={{height:50,width:130,borderRadius:100,marginRight:20}}/>
+            </View>
+            <View style={{width:'50%',height:50, margin:5,marginTop:20}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            <View style={{width:'100%',height:20, margin:5}}/>
+            </View>
+          </SkeletonPlaceholder>
+        </>
         :
         <View >
         <StatusBar backgroundColor={colors}></StatusBar>
