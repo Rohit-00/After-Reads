@@ -5,6 +5,7 @@ import { supabase } from '../../../utils/supabase'
 import { BookmarkContext } from '../../../store/bookmarkContextProvider'
 import { colors } from '../../../utils/colors'
 import { useAuth } from '../../../store/authContext'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 export type bookSliderParamList={
   BookSlider:{title:string}
 }
@@ -12,6 +13,7 @@ export type bookSliderParamList={
 
 export default function Library({navigation}:any) {
   const {addItem,savedItems} = useContext(BookmarkContext)
+  const [loading, setLoading] = useState(true)
   const {user} = useAuth()
 //   const [savedItems,setSavedItems] = useState<any>()
   const uid = user&&user.id
@@ -22,26 +24,41 @@ export default function Library({navigation}:any) {
       .eq('uid',uid)
       .order('created_at',{ascending:false})
       addItem(data)
-      console.log(savedItems)
+      setLoading(false)
 
 }
 getLibrary()
   },[])
     return (
       
-      <View style={{flex:1,backgroundColor:colors.background}}>
-         <View style={styles.headingContainer}>
-              <Text style={styles.heading}>Read Later</Text>
-            </View>
-      
-      
+      <View style={{backgroundColor:colors.background,height:'100%'}}>
+        {loading?
+        <SkeletonPlaceholder>
+          <View style={{flexDirection:'column',height:'100%'}}>
+          <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+          <View style={{width:'40%',height:240,borderRadius:6,margin:20}}/>
+          <View style={{width:'40%',height:240,borderRadius:6,margin:20}}/>
+          </View>
+          <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+          <View style={{width:'40%',height:240,borderRadius:6,margin:20}}/>
+          <View style={{width:'40%',height:240,borderRadius:6,margin:20}}/>
+          </View>
+          <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
+          <View style={{width:'40%',height:240,borderRadius:6,margin:20}}/>
+          <View style={{width:'40%',height:240,borderRadius:6,margin:20}}/>
+          </View>
+          </View>
+        </SkeletonPlaceholder>
         
-        <BookSlider heading={'Read Later'} data={savedItems} navigation={navigation}/>
-        
-       
-        
-
-      </View>
+      :      
+      <>
+      <View style={styles.headingContainer}>
+      <Text style={styles.heading}>Read Later</Text>
+    </View>
+<BookSlider heading={'Read Later'} data={savedItems} navigation={navigation}/>
+</>
+}
+</View>
       
     )
   }

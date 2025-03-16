@@ -2,11 +2,15 @@ import {  StyleSheet, View, Pressable , TouchableOpacity,ScrollView} from 'react
 import { useState, useEffect, lazy, Suspense } from 'react';
 import Icon2 from '@expo/vector-icons/Ionicons';
 import {GoogleGenerativeAI} from '@google/generative-ai'
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API!);
+
 import Markdown from 'react-native-markdown-display'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from '../../../utils/supabase';
 import { Text } from 'react-native';
+import  Constants  from 'expo-constants';
+const genAI = new GoogleGenerativeAI(Constants.expoConfig?.extra!.GOOGLE_GEMINI_API_KEY);
+console.log("constants",Constants.expoConfig?.extra!.GOOGLE_GEMINI_API_KEY)
+
 export default function Reader({route,navigation}:any){
     const title = route.params.title
     const author = route.params.author
@@ -30,7 +34,6 @@ export default function Reader({route,navigation}:any){
       try {
         const value:any = await AsyncStorage.getItem(id);
         
-        console.log('from Async Storage')
         if(value){
           setLoading(false)
         }
@@ -67,7 +70,6 @@ export default function Reader({route,navigation}:any){
         
         setSummary(text)
         setLoading(false)
-        console.log('from api')
       }
       catch(err){
         console.log(err)

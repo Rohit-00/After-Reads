@@ -5,6 +5,7 @@ import Icon from '@expo/vector-icons/Feather';
 import Icon2 from '@expo/vector-icons/AntDesign';
 import { supabase } from '../../../utils/supabase';
 import { Books } from '../../../types/types';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 export const truncateString = (str: string, maxLength: number): string => {
   if (str.length <= maxLength) {
     return str;
@@ -78,11 +79,19 @@ const changeHttpToHttps = (obj: any): any => {
 
         {loading?
         <View>
-        {/* <Skeleton h={180} width={'100%'} marginTop={3} borderTopLeftRadius={15} borderBottomLeftRadius={15}/>
-        <Skeleton h={180} width={'100%'} marginTop={3} borderTopLeftRadius={15} borderBottomLeftRadius={15}/>
-        <Skeleton h={180} width={'100%'} marginTop={3} borderTopLeftRadius={15} borderBottomLeftRadius={15}/>
-        <Skeleton h={180} width={'100%'} marginTop={3} borderTopLeftRadius={15} borderBottomLeftRadius={15}/> */}
-        <Text>Loading...</Text>
+          <SkeletonPlaceholder>
+            <View style={{flexDirection:'column',margin:10}}>
+              <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
+              <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
+              <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
+              <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
+              <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
+              <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
+              <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
+            
+              </View>
+          </SkeletonPlaceholder>
+  
         </View>
         :
         <ScrollView showsVerticalScrollIndicator={false}>

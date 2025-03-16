@@ -4,9 +4,7 @@ import { supabase } from '../../../utils/supabase'
 import { colors } from '../../../utils/colors'
 import { truncateText } from '../../../utils/helpers'
 import Icon from '@expo/vector-icons/Ionicons';
-
-const MAX_TITLE_LENGTH = 20;
-
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 
 const Category = ({route,navigation}:any) => {
     const category = route.params.category
@@ -22,7 +20,6 @@ const Category = ({route,navigation}:any) => {
               
         }
         getLibrary()
-  
           },[])
   return (
     <View>
@@ -34,29 +31,53 @@ const Category = ({route,navigation}:any) => {
     </View>
 
      <View style={styles.container}>
-     <FlatList
-        data={datad}
-        keyExtractor={(item) => item.bookId}
-        numColumns={2}
-        contentContainerStyle={styles.flatListContainer}
-        showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => (
-         
-           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>      
-                     <TouchableOpacity onPress={()=>navigation.navigate('BookDetails',{thumbnail:item.bookThumbnail,id:item.bookId,title:item.bookTitle,author:item.bookAuthor,desc:item.description})}>
-                     <View>
-                     <Image source={{ uri: item.bookThumbnail}} style={styles.image}/>
+      {loading?
+      <View style={{height:'100%'}}>
+      <SkeletonPlaceholder>
+        <View style={{flexDirection:'column',height:'100%'}}>
+        <View style={{flexDirection:'row',alignItems:'center',marginLeft:10,justifyContent:'center'}}>
+        <View style={{height:250,width:170,margin:20}}/>
+        <View style={{height:250,width:170,margin:20}}/>
+        </View>
+        <View style={{flexDirection:'row',alignItems:'center',marginLeft:10,justifyContent:'center'}}>
+        <View style={{height:250,width:170,margin:20}}/>
+        <View style={{height:250,width:170,margin:20}}/>
+        </View>
+        <View style={{flexDirection:'row',alignItems:'center',marginLeft:10,justifyContent:'center'}}>
+        <View style={{height:250,width:170,margin:20}}/>
+        <View style={{height:250,width:170,margin:20}}/>
+        </View>
+        </View>
+      </SkeletonPlaceholder>
+      </View>
+      :
+
+      <FlatList
+      data={datad}
+      keyExtractor={(item) => item.bookId}
+      numColumns={2}
+      contentContainerStyle={styles.flatListContainer}
+      showsVerticalScrollIndicator={false}
+      renderItem={({ item }) => (
+       
+         <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>      
+                   <TouchableOpacity onPress={()=>navigation.navigate('BookDetails',{thumbnail:item.bookThumbnail,id:item.bookId,title:item.bookTitle,author:item.bookAuthor,desc:item.description})}>
+                   <View>
+                   <Image source={{ uri: item.bookThumbnail}} style={styles.image}/>
+                   </View>
+                   </TouchableOpacity>
+                   <View>
+                   <Text style={styles.bookTitle}>{truncateText(item.bookTitle,20)}</Text>
+                   <Text style={styles.bookAuthor}>{item.bookAuthor}</Text>
                      </View>
-                     </TouchableOpacity>
-                     <View>
-                     <Text style={styles.bookTitle}>{truncateText(item.bookTitle,20)}</Text>
-                     <Text style={styles.bookAuthor}>{item.bookAuthor}</Text>
-                       </View>
-                     </View>
-                
-        
-        )}
-      />
+                   </View>
+              
+      
+      )}
+    />
+      
+      }
+     
       </View>
     </View>
   )
@@ -73,7 +94,7 @@ const styles = StyleSheet.create({
      
       },
       flatListContainer: {
-        paddingBottom: 120, // Increased bottom padding
+        paddingBottom: 150, // Increased bottom padding
       },
       container:{
         backgroundColor:colors.background,

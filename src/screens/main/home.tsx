@@ -58,9 +58,6 @@ const styles = StyleSheet.create({
     marginHorizontal:10,
     color:colors.text,
     fontWeight:'bold',
-    
-   
-    
   },
   headingContainer:{
     backgroundColor:'white',
