@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   
   searchContainer:{
-   backgroundColor:'white',
+   backgroundColor:colors.secondBackground,
    paddingHorizontal:10,
    flexDirection:'row', 
    marginTop:'7%',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontSize:16,
     paddingRight:0,
     
-    borderColor:'#E6E6E6',
+    borderColor:colors.border,
   },
 
   searchIcon:{

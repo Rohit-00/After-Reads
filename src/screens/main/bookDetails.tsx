@@ -8,6 +8,7 @@ import Markdown from 'react-native-markdown-display';
 import { useAuth } from '../../../store/authContext';
 import ImageColors from 'react-native-image-colors';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { colors } from '../../../utils/colors';
 
 const languages = [{id:1,lang:'Arabic'},
   {id:2,lang:'Bengali'},
@@ -291,7 +292,6 @@ else{
 
 const styles = StyleSheet.create({
     container:{
-      
     },
     imageContainer:{
       alignItems:'center',
@@ -301,7 +301,7 @@ const styles = StyleSheet.create({
       
     },
     contentContainer:{
-    
+    backgroundColor:colors.secondBackground
     },
     detailsContainer:{
       marginHorizontal:10

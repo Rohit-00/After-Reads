@@ -8,6 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from '../../../utils/supabase';
 import { Text } from 'react-native';
 import  Constants  from 'expo-constants';
+import { colors } from '../../../utils/colors';
 const genAI = new GoogleGenerativeAI(Constants.expoConfig?.extra!.GOOGLE_GEMINI_API_KEY);
 console.log("constants",Constants.expoConfig?.extra!.GOOGLE_GEMINI_API_KEY)
 
@@ -147,7 +148,8 @@ const styles = StyleSheet.create({
     },
     container:{
       marginHorizontal:10,
-      flex:1
+      flex:1,
+      backgroundColor:colors.secondBackground
     },
     back:{
       marginVertical:10

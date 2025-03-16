@@ -1,6 +1,7 @@
 import React,{useCallback,useState} from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView,Linking,Alert } from 'react-native';
 import { useAuth } from '../../../store/authContext';
+import { colors } from '../../../utils/colors';
   const url = 'https://x.com/byir0nic'
 
 
@@ -45,7 +46,7 @@ const Profile: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor:colors.background,
   },
   header: {
     padding: 16,
@@ -54,10 +55,6 @@ const styles = StyleSheet.create({
   },
   backButton: {
     padding: 8,
-  },
-  backButtonText: {
-    color: '#ff69b4',
-    fontSize: 16,
   },
   profileSection: {
     alignItems: 'center',
@@ -85,11 +82,11 @@ const styles = StyleSheet.create({
   menuItem: {
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    borderBottomColor: colors.border,
   },
   menuItemText: {
     fontSize: 18,
-    color: '#333',
+    color: colors.text,
   },
 });
 

@@ -6,6 +6,7 @@ import Icon2 from '@expo/vector-icons/AntDesign';
 import { supabase } from '../../../utils/supabase';
 import { Books } from '../../../types/types';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+import { colors } from '../../../utils/colors';
 export const truncateString = (str: string, maxLength: number): string => {
   if (str.length <= maxLength) {
     return str;
@@ -62,7 +63,7 @@ const changeHttpToHttps = (obj: any): any => {
     return (
         
       <View style={styles.container}>
-      <StatusBar barStyle='default' backgroundColor={'white'}></StatusBar>
+      <StatusBar barStyle='default' backgroundColor={colors.secondBackground}></StatusBar>
       <View style={styles.searchContainer} >
       <TouchableOpacity onPress={()=>navigation.pop()} style={styles.backButton}><Icon2 name='left' size={24}  style={styles.searchIcon} /></TouchableOpacity>
         <TextInput
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
    flexDirection:'row', 
    justifyContent:'space-evenly',
    alignItems:'center',
-   backgroundColor:'white',
+   backgroundColor:colors.secondBackground,
    paddingBottom:10
   },
 
@@ -191,13 +192,13 @@ const styles = StyleSheet.create({
   },
   bookTitle:{
     fontWeight:'bold',
-    color:'black',
+    color:colors.text,
     fontSize:18,
     
   },
   bookAuthor:{
     fontSize:14,
-    color:'black',
+    color:colors.text,
     
   },
   resultContainer:{
@@ -205,7 +206,7 @@ const styles = StyleSheet.create({
   },
   line:{
     height:1,
-    backgroundColor:'grey',
+    backgroundColor:colors.border,
     marginHorizontal:20
   }
 
