@@ -77,7 +77,6 @@ export default function BookDetails({route,navigation}:any){
     const author = route.params.author
     const desc = route.params.desc
     const {user} = useAuth();
-    //getting prominent color of the book cover
     useEffect(() => {
       const fetchColors = async () => {
      
@@ -90,7 +89,6 @@ export default function BookDetails({route,navigation}:any){
     const id = route.params.id
     const uid = user!.id
 
-    //Call google books api for book high res cover
     useEffect(()=>{
       
       const fetchBooks=async()=>{
@@ -115,6 +113,7 @@ export default function BookDetails({route,navigation}:any){
           const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${id}`);
           const coverUrl = response.data.volumeInfo.imageLinks?.medium;
           setBookCover(coverUrl);
+          console.log(coverUrl)
 
         } catch (error) {
           console.error('Error fetching book cover:', error);
@@ -150,10 +149,12 @@ if(data?.length===0){
       .from('ReadLater')
       .insert([
         {  bookTitle: title,bookId:id,bookThumbnail:cover,description:desc,bookAuthor:author,uid:uid },
+        // {  bookTitle: title,bookId:id,bookThumbnail:cover,description:desc,bookAuthor:author,category:'Time Management'},
       ])
       .select()
       getLibrary()
-            
+
+
       }
 else{
   setIsSaved(false) 
@@ -173,7 +174,7 @@ else{
     }
     return (
       
-      <View>
+      <View style={{backgroundColor:colors.secondBackground,height:'100%'}}>
         {loading?
         <>
           <SkeletonPlaceholder>
@@ -207,10 +208,10 @@ else{
           </SkeletonPlaceholder>
         </>
         :
-        <View >
+        <View style={{backgroundColor:colors.secondBackground,height:'100%'}}>
         <StatusBar backgroundColor={colors}></StatusBar>
         <ScrollView
-        style={{paddingBottom:0}}
+      
         showsVerticalScrollIndicator={false}
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
@@ -292,25 +293,32 @@ else{
 
 const styles = StyleSheet.create({
     container:{
+      backgroundColor:colors.secondBackground,
+      height:'100%'
     },
     imageContainer:{
       alignItems:'center',
       padding:20,
-      height:300
+      height:300,
+      
       
       
     },
     contentContainer:{
-    backgroundColor:colors.secondBackground
+    backgroundColor:colors.secondBackground,
+    height:'100%'
     },
     detailsContainer:{
-      marginHorizontal:10
+      marginHorizontal:10,
+      height:'100%',
+      backgroundColor:colors.secondBackground,
+
+
     },
    
     back:{
       margin:10,
-      
-      
+
     },
     bookCover:{
         height:300,

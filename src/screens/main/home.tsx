@@ -35,9 +35,9 @@ export default function Home({navigation}:any) {
         <View style={styles.horizontalLinks}>
           <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Productivity'})}>Productivity</Text></TouchableOpacity>
           <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Enhance Creativity'})}>Creativity</Text></TouchableOpacity>
-          <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Enhance Creativity'})}>Critical Thinking</Text></TouchableOpacity>
-          <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Enhance Creativity'})}>Philopshy</Text></TouchableOpacity>
-          <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Enhance Creativity'})}>Time Management</Text></TouchableOpacity>
+          <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Critical Thinking'})}>Critical Thinking</Text></TouchableOpacity>
+          <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Philosophy'})}>Philosophy</Text></TouchableOpacity>
+          <TouchableOpacity><Text style={styles.link} onPress={()=>navigation.navigate('Category',{category:'Time Management'})}>Time Management</Text></TouchableOpacity>
         </View>
         </ScrollView>
         <BookRecommendations heading={'Productivity'} navigation={navigation}/>
