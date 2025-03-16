@@ -1,21 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import { AuthService, supabase } from './utils/supabase';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from '@expo/vector-icons/Ionicons';
+
 //Auth Screens
 import SignUp from './src/screens/auth/signUp';
 import SignIn from './src/screens/auth/signIn';
 
 //Main Screens
 import Home from './src/screens/main/home';
-
-import { NavigationContainer } from '@react-navigation/native';
-import { User } from '@supabase/supabase-js';
-import { authService } from './utils/supabase';
-import { useEffect, useState } from 'react';
-import { AuthProvider, useAuth } from './store/authContext';
 import Search from './src/screens/main/search';
 import Library from './src/screens/main/library';
 import Profile from './src/screens/main/profile';
@@ -24,7 +17,12 @@ import Search2 from './src/screens/main/search2';
 import BookDetails from './src/screens/main/bookDetails';
 import Reader from './src/screens/main/reader';
 import Category from './src/screens/main/category';
+
+
+import { NavigationContainer } from '@react-navigation/native';
+import { AuthProvider, useAuth } from './store/authContext';
 import { BookmarkContextProvider } from './store/bookmarkContextProvider';
+
 
 const Stack = createNativeStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -107,7 +105,7 @@ export default function App() {
     <BookmarkContextProvider>
     <AuthProvider>
     <NavigationContainer>
-      <StackNavigation></StackNavigation>
+      <StackNavigation/>
    </NavigationContainer>
     </AuthProvider>
     </BookmarkContextProvider>
@@ -115,10 +113,5 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
 });

@@ -3,7 +3,7 @@ import { Appearance } from "react-native";
 const theme = {
     dark: {
         text: 'white',
-        background: '#23252D',
+        background: '#121212',
         primary: '#00C896',
         border: '#5E5E5E'
     },

@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -24,6 +24,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "d3261425-155e-4fa2-883d-47bf83c853b9"
+      },
+      "GOOGLE_GEMINI_API_KEY": "AIzaSyDCaHCUIBYGgFS8XT02eLzK6euVBiSL7u0"
+    },
+    "owner": "rohit965"
   }
 }

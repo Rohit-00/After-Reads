@@ -63,6 +63,7 @@ ios/DerivedData/
 ios/.expo/
 
 # Android files
+/android
 android/.gradle/
 android/app/build/
 android/build/
