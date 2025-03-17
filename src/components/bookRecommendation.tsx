@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     width: 130,
     margin:5,
     marginBottom:0,
-    height: 200, // Adjust the height as needed
+    height: 200, 
     resizeMode: 'cover',
     borderRadius:6,
     borderWidth:1,
