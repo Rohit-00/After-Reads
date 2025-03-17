@@ -84,7 +84,7 @@ if(isLoading){
         <Stack.Screen name='Main' component={MainTabNavigator} options={{ headerShown: false }} />
         <Stack.Screen name='Search2' component={Search2} options={{ headerShown: false }} />
         <Stack.Screen name='BookDetails' component={BookDetails} options={{ headerShown: false }} />
-        <Stack.Screen name='Reader' component={Reader} options={{ headerShown: false }} />
+        <Stack.Screen name='Reader' component={Reader} options={{ headerShown: false,animation:'slide_from_bottom' }} />
         <Stack.Screen name='Category' component={Category} options={{ headerShown: false }} />
         </>
       ) : (
