@@ -9,8 +9,9 @@ import { supabase } from '../../../utils/supabase';
 import { Text } from 'react-native';
 import  Constants  from 'expo-constants';
 import { colors } from '../../../utils/colors';
-const genAI = new GoogleGenerativeAI(Constants.expoConfig?.extra!.GOOGLE_GEMINI_API_KEY);
-console.log("constants",Constants.expoConfig?.extra!.GOOGLE_GEMINI_API_KEY)
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API!);
+
 
 export default function Reader({route,navigation}:any){
     const title = route.params.title
@@ -107,14 +108,43 @@ export default function Reader({route,navigation}:any){
         <View style={styles.buttons}><TouchableOpacity onPress={refresh}><Icon2 name='refresh' color='#00C896' size={32} /></TouchableOpacity></View>
         </View>
         </View>
-        <ScrollView style={{ flex:1}}>
+        <ScrollView style={{ flex:1,height:'100%'}}>
         {loading?
-        <View>
-        {/* <Skeleton height={10} width={'100%'}></Skeleton>
-        <Skeleton.Text lines={20} ></Skeleton.Text> */}
-        <Text>Loading...</Text>
+        <SkeletonPlaceholder>
+        <View style={{flexDirection:'column',alignItems:'flex-start',margin:10,height:'100%'}}>
+       <View style={{width:'70%',height:40,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+       <View style={{width:'100%',height:20,marginVertical:5}}/>
+
+   
+
+          
+          
         </View>
-       
+        </SkeletonPlaceholder>
+       //What a mess
         :
         <View>
         <Text style={styles.title}>{title}</Text>
