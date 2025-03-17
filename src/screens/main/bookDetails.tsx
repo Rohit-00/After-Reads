@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, Animated, TouchableOpacity, Dimensions, ScrollView, StatusBar} from 'react-native'
+import { Text, StyleSheet, View,  TouchableOpacity,  ScrollView, StatusBar, Image, Modal} from 'react-native'
 import { useEffect, useState, useRef, useContext} from 'react';
 import Icon from '@expo/vector-icons/Ionicons';
 import axios from 'axios';
@@ -54,19 +54,7 @@ const languages = [{id:1,lang:'Arabic'},
 export default function BookDetails({route,navigation}:any){
     const {addItem,savedItems} = useContext(BookmarkContext)
     const [loading, setLoading] = useState(true)
-    const scrollY = useRef(new Animated.Value(0)).current;
 
-    const imageHeight = scrollY.interpolate({
-      inputRange: [0, 200],
-      outputRange: [250, 0],
-      extrapolate:'clamp',
-    });
-
-    const imageOpacity = scrollY.interpolate({
-      inputRange: [0, 200],
-      outputRange: [1, 0],
-      extrapolate: 'clamp',
-    });
     const [showModal,setShowModal] = useState<boolean>(false)
     const [colors,setColors] = useState<any>('')
     const [cover,setBookCover] = useState<any>([])
@@ -179,7 +167,7 @@ else{
         <>
           <SkeletonPlaceholder>
             <View style={{flexDirection:'column',height:'100%'}}>
-            <View style={{height:370,width:'100%'}}/>
+            <View style={{height:300,width:'100%'}}/>
           
               <View style={{flexDirection:'row',marginHorizontal:10,width:'100%',alignItems:'center',justifyContent:'space-between',marginTop:10}}>
                 <View style={{flexDirection:'row',gap:4}}>
@@ -213,10 +201,7 @@ else{
         <ScrollView
       
         showsVerticalScrollIndicator={false}
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
-          { useNativeDriver: false }
-        )}>
+       >
        
         <View style={{backgroundColor:colors}}>
         <View style={[styles.back]}><TouchableOpacity onPress={()=>{navigation.pop()}} ><Icon name='chevron-back-outline' color='#00C896' size={38} /></TouchableOpacity></View>
@@ -224,14 +209,14 @@ else{
        
           <View style={[styles.imageContainer,{backgroundColor:colors}]}>
         {cover?
-        <Animated.Image
+        <Image
         source={{uri:(cover)}}
-        style={[styles.bookCover,{height:imageHeight,opacity:imageOpacity}]} 
+        style={[styles.bookCover]} 
 
         />:
-        <Animated.Image
+        <Image
         source={{uri:(thumbnail)}}
-        style={[styles.bookCover,{height:imageHeight,opacity:imageOpacity}]} 
+        style={[styles.bookCover]} 
 
         />
 
@@ -247,32 +232,47 @@ else{
         }
           
           <View style={styles.buttonContainer}><TouchableOpacity onPress={()=>setShowModal(true)}><View style={styles.button}><Icon name='language-outline' size={26} color='white' ></Icon></View></TouchableOpacity><Text style={styles.buttonLabel}>{selectedLanguage?selectedLanguage:'English'}</Text></View>
-          <View style={styles.buttonContainer}><TouchableOpacity><View style={styles.button}><Icon name='share-social-outline' size={26} color='white' ></Icon></View></TouchableOpacity><Text style={styles.buttonLabel}>Save</Text></View>
           
           </View>
         <View style={styles.readContainer}>
           
-          <TouchableOpacity onPress={()=>{navigation.push('Reader',{title:title,author:author,id:id,language:selectedLanguage})}}><Text style={styles.readButton}>Read</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.readButton} onPress={()=>{navigation.push('Reader',{title:title,author:author,id:id,language:selectedLanguage})}}><Text style={styles.readText}>Read</Text></TouchableOpacity>
         </View>
         </View>
         
         <View style={styles.detailsContainer}>
-        {/* <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
-        <Modal.Content maxWidth="400px">
-          <Modal.CloseButton />
-          <Modal.Header ><Text style={styles.modalHeader}>Choose a language</Text></Modal.Header>
-          <Modal.Body style={styles.modalBody}>
-              <ScrollView>
-              {languages.map((item)=>(
-                <View style={styles.languageContainer}>
-                <TouchableOpacity onPress={()=>{setSelectedLanguage(item.lang); setShowModal(false)}}><Text style={styles.languageText} key={item.id}>{item.lang}</Text></TouchableOpacity>
-                </View>
-              ))}
-              </ScrollView>
-          </Modal.Body>
-          
-        </Modal.Content>
-      </Modal> */}
+        <Modal
+  animationType="fade"
+  transparent={true}
+  visible={showModal}
+  onRequestClose={() => setShowModal(false)}
+>
+  <View style={styles.centeredView}>
+    <View style={styles.modalView}>
+      <TouchableOpacity 
+        style={styles.closeButton} 
+        onPress={() => setShowModal(false)}
+      >
+        <Icon name="close" size={24} color="#000" />
+      </TouchableOpacity>
+      <Text style={styles.modalHeader}>Choose a language</Text>
+      <ScrollView style={styles.modalBody}>
+        {languages.map((item) => (
+          <View style={styles.languageContainer} key={item.id}>
+            <TouchableOpacity 
+              onPress={() => {
+                setSelectedLanguage(item.lang);
+                setShowModal(false);
+              }}
+            >
+              <Text style={styles.languageText}>{item.lang}</Text>
+            </TouchableOpacity>
+          </View>
+        ))}
+      </ScrollView>
+    </View>
+  </View>
+</Modal>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.author}>{author}, </Text>
             <Markdown>
@@ -305,6 +305,7 @@ const styles = StyleSheet.create({
       
     },
     contentContainer:{
+    position:'relative',
     backgroundColor:colors.secondBackground,
     height:'100%'
     },
@@ -318,26 +319,32 @@ const styles = StyleSheet.create({
    
     back:{
       margin:10,
+      position:"absolute",
+      
+      top:0,
+      left:0,
+      zIndex:100
 
     },
     bookCover:{
-        height:300,
+        height:250,
         width:300,
         resizeMode:'contain'
     },
     buttons:{
-      
+  
       flexDirection:'row',
       justifyContent:'space-between',
-      marginVertical:10,
-      
+   
+      top:-20
     },
     button:{
       backgroundColor:"#00C896",
       marginHorizontal:10,
       padding:7,
-      borderRadius:25,
-      width:40,
+      borderRadius:100,
+      width:50,
+      height:50,
       alignItems:'center',
       justifyContent:'center'
     },
@@ -352,12 +359,18 @@ const styles = StyleSheet.create({
       padding:12,
       paddingHorizontal:30,
       backgroundColor:'#00C896',
-      height:45,
-      borderRadius:25,
-      fontWeight:'bold',
-      fontSize:16,
-      color:'white'
+      height:55,
+      width:130,
+      alignItems:'center',
+      justifyContent:'center',
+      borderRadius:100,
+
       
+    },
+    readText:{
+      fontWeight:'bold',
+      fontSize:18,
+      color:'white'
     },
     groupButtons:{
       flexDirection:'row',
@@ -400,7 +413,33 @@ const styles = StyleSheet.create({
 
 
     },
-    modalBody:{
-      height:300
-    }
+// Add to existing styles
+centeredView: {
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)'
+},
+modalView: {
+  backgroundColor: 'white',
+  borderRadius: 20,
+  padding: 20,
+  width: '90%',
+  maxHeight: '80%',
+  shadowColor: '#000',
+  shadowOffset: {
+    width: 0,
+    height: 2
+  },
+  shadowOpacity: 0.25,
+  shadowRadius: 4,
+  elevation: 5
+},
+closeButton: {
+  alignSelf: 'flex-end',
+  padding: 5
+},
+modalBody: {
+  marginTop: 15
+}
 })
