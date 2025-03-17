@@ -29,10 +29,7 @@
     "extra": {
       "eas": {
         "projectId": "d3261425-155e-4fa2-883d-47bf83c853b9"
-      },
-      "GOOGLE_GEMINI_API_KEY": "AIzaSyDCaHCUIBYGgFS8XT02eLzK6euVBiSL7u0",
-      "EXPO_PUBLIC_SUPABASE_URL": "https://whhxrhfjfpclkbmoslqb.supabase.co",
-      "EXPO_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoaHhyaGZqZnBjbGtibW9zbHFiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzcwMjIzODYsImV4cCI6MjA1MjU5ODM4Nn0.ytYlBJsS7hkbzNoXj1WN4R9rBwrvz-RO19ZZUBLHEwM"
+      }
     },
     "owner": "rohit965"
   }
