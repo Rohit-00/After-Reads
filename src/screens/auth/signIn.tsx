@@ -25,8 +25,40 @@ const SignupSchema = Yup.object().shape({
 export default function SignIn({navigation}:any) {
   const { signIn, isLoading,  signOut } = useAuth();
   const [error,setError] = useState('')
- 
 
+  useEffect(()=>{
+    GoogleSignin.configure({
+      scopes: ['https://www.googleapis.com/auth/drive.readonly'],
+      webClientId: '836181865562-umip99hk9bh00qnrmdh4bm3n8jue7lc9.apps.googleusercontent.com'})
+  })
+
+const handleGoogleSignIn = async () => {
+      try{
+        await GoogleSignin.hasPlayServices();
+        const userInfo = await GoogleSignin.signIn();
+        if (userInfo.data!.idToken) {
+          const { data, error } = await supabase.auth.signInWithIdToken({
+            provider: 'google',
+            token: userInfo.data!.idToken,
+          })
+          console.log(error, data)
+        } else {
+          throw new Error('no ID token present!')
+        }
+      }catch (error: any) {
+        console.log(error)
+          if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+            // user cancelled the login flow
+          } else if (error.code === statusCodes.IN_PROGRESS) {
+            // operation (e.g. sign in) is in progress already
+          } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+            // play services not available or outdated
+          } else {
+            // some other error happened
+          }
+        }
+      
+}
   const onRegister = async (values: FormikValues) => {
     try {
       const {data,error} = await signIn(
@@ -43,7 +75,7 @@ export default function SignIn({navigation}:any) {
     <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always" contentContainerStyle={{flex:1,justifyContent:'center'}}>
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-      <Text style={styles.title}>Sign In</Text>
+      <Text style={styles.title}>Sign Up</Text>
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
@@ -84,7 +116,7 @@ export default function SignIn({navigation}:any) {
         )}
       </Formik>
       
-      <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={{textDecorationLine:'underline'}}>Already have an account? Sign In</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={{textDecorationLine:'underline'}}>Don't have an account? Sign Up</Text></TouchableOpacity>
       </View>
       <View style={styles.horizontalLineContainer}>
         <View style={styles.line} />
@@ -94,7 +126,7 @@ export default function SignIn({navigation}:any) {
 
       <View style={styles.socialContainer}>
      
-      <TouchableOpacity style={styles.googleButton}>
+      <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignIn}>
         <Text style={styles.googleText}>Sign In with Google</Text>
       </TouchableOpacity>
 

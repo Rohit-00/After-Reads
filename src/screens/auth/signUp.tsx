@@ -152,12 +152,6 @@ const handleGoogleSignIn = async () => {
       <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignIn}>
         <Text style={styles.googleText}>Sign In with Google</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.facebookButton}>
-        <Text style={styles.facebookText}>Sign In with Facebook</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.appleButton} onPress={() => {}}>
-        <Text style={styles.appleText}>Sign In with Apple</Text>
-      </TouchableOpacity>
       
       </View>
     </View>

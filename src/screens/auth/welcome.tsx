@@ -2,6 +2,7 @@ import { Text, StyleSheet, View, Image, TouchableOpacity, useColorScheme} from '
 export default function Welcome({navigation}:any) {
     const colorScheme = useColorScheme();
     
+
     const styles = StyleSheet.create({
         body:{
             
@@ -86,7 +87,7 @@ export default function Welcome({navigation}:any) {
         <View style={styles.container}>
         <View style={styles.imageContainer}>
         <Image 
-     
+        source={require('../../../assets/images/ProfileImage.png')}
         style={styles.image} />
         <Text style={styles.bodyText}>
         Revising books made {'\n'}
@@ -95,12 +96,12 @@ export default function Welcome({navigation}:any) {
         </View>
         
         <View style={styles.buttonContainer}>
-        <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.replace('SignIn')}>
+        <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.replace('SignUp')}>
             <Text style={styles.button}>
             Get Started
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity activeOpacity={0.8} onPress={(()=>navigation.replace('SignIn'))}>
             <Text style={styles.button2}>
             Already have an account
             </Text>
