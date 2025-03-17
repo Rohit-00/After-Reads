@@ -2,7 +2,6 @@ import { Text, StyleSheet, View, Image, TouchableOpacity, useColorScheme} from '
 export default function Welcome({navigation}:any) {
     const colorScheme = useColorScheme();
     
-
     const styles = StyleSheet.create({
         body:{
             
