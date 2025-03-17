@@ -4,7 +4,7 @@ import { supabase } from '../../utils/supabase'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 
 
-export default function Banner() {
+export default function Banner({navigation}:any) {
   const [loading, setLoading] = useState(true)
   const [data,setData] = useState<any>([{
     qoute:'hello',
@@ -20,13 +20,15 @@ export default function Banner() {
         .select('*')
         setData(data)
         setLoading(false)
+  
       }catch(error){
         console.log(error)
       }
   
     }
     getBook()
-  })
+  },[])
+  console.log(data[data.length-1])
     return (
       <>
       {loading?
@@ -39,13 +41,15 @@ export default function Banner() {
         
         <View style={styles.bannerText}>
           <Text style={styles.bannerHeading}>Today's Read</Text>
-          <Text style={styles.bannerBody}>{data[0].qoute}</Text>
-          <Text style={styles.bannerAuthor}>-{data[0].author}</Text>
-          <TouchableOpacity><Text style={styles.bannerButton}>Read</Text></TouchableOpacity>
+          <Text style={styles.bannerBody}>{data[data.length-1].qoute}</Text>
+          <Text style={styles.bannerAuthor}>-{data[data.length-1].author}</Text>
+          <TouchableOpacity
+          onPress={()=>navigation.navigate('BookDetails',{thumbnail:data[data.length-1].bookThumbnail,id:data[data.length-1].bookId,title:data[data.length-1].bookTitle,author:data[data.length-1].bookAuthor,desc:data[data.length-1].description})}
+          ><Text style={styles.bannerButton}>Read</Text></TouchableOpacity>
         </View>
         <View>
           <Image 
-          source={{uri:(data[0].cover)}}
+          source={{uri:(data[data.length-1].cover)}}
           style={styles.bannerThumbnail}
           
           />
@@ -69,7 +73,7 @@ const styles = StyleSheet.create({
     },
     bannerText:{
       margin:10,
-      width:200
+      width:200,
     },
     bannerHeading:{
       fontWeight:'bold',
