@@ -1,9 +1,16 @@
 import { useEffect, useState} from 'react';
 import { Text, StyleSheet, View, TextInput, TouchableOpacity,ScrollView } from 'react-native';
-
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+  statusCodes,
+  User,
+} from '@react-native-google-signin/google-signin'
 import * as Yup from 'yup';
 import { Formik, FormikValues } from 'formik';
 import { useAuth } from '../../../store/authContext';
+import { colors } from '../../../utils/colors';
+import { supabase } from '../../../utils/supabase';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -19,6 +26,7 @@ export default function SignIn({navigation}:any) {
   const { signIn, isLoading,  signOut } = useAuth();
   const [error,setError] = useState('')
  
+
   const onRegister = async (values: FormikValues) => {
     try {
       const {data,error} = await signIn(
@@ -85,15 +93,11 @@ export default function SignIn({navigation}:any) {
       </View>
 
       <View style={styles.socialContainer}>
+     
       <TouchableOpacity style={styles.googleButton}>
         <Text style={styles.googleText}>Sign In with Google</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.facebookButton}>
-        <Text style={styles.facebookText}>Sign In with Facebook</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.appleButton} onPress={() => {}}>
-        <Text style={styles.appleText}>Sign In with Apple</Text>
-      </TouchableOpacity>
+
       
       </View>
     </View>
@@ -103,7 +107,9 @@ export default function SignIn({navigation}:any) {
 
 const styles = StyleSheet.create({
   container: {
-   
+    backgroundColor:colors.background,
+    height:'100%',
+    width:'100%',
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
@@ -120,7 +126,7 @@ const styles = StyleSheet.create({
   },
   title: {
     opacity:0.65,
-    color:'black',
+    color:colors.text,
     fontSize: 32,
     fontWeight:'bold',
     marginBottom: 16,
@@ -143,7 +149,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:15,
     marginVertical: 8,
     borderRadius: 30,
-    backgroundColor:'white',
+    backgroundColor:colors.secondBackground,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.20,
