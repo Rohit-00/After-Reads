@@ -23,12 +23,12 @@ const Profile: React.FC = () => {
       </View>
       <View style={styles.profileSection}>
         <Image
-          source={{ uri: 'https://pbs.twimg.com/profile_banners/1750467753272877056/1706179078/1500x500' }}
+          source={{ uri: 'https://avatars.githubusercontent.com/u/94440631?v=4' }}
           style={styles.profileImage}
         />
         <Text style={styles.profileName}>Note From The Dev</Text>
-        <Text style={styles.profileSubtitle}>This is not an full fledged app, it's just my(Rohit) side project. 
-          I'll keep it live untill I couldn't afford the infrastructure cost. You can follow me on X to get updates related to this or my another projects.</Text>
+        <Text style={styles.profileSubtitle}>This is not a full fledged app, it's just my(Rohit) side project. 
+      You can follow me on X to get updates related to this or my another projects.</Text>
       </View>
       <View style={styles.menuSection}>
        
