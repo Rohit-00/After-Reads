@@ -22,6 +22,7 @@ import Category from './src/screens/main/category';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider, useAuth } from './store/authContext';
 import { BookmarkContextProvider } from './store/bookmarkContextProvider';
+import Banner from './src/components/banner';
 
 
 const Stack = createNativeStackNavigator()

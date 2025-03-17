@@ -133,14 +133,21 @@ export default function BookDetails({route,navigation}:any){
        getLibrary()
 if(data?.length===0){
   setIsSaved(true)
-      await supabase
+  try{
+      const data = await supabase
       .from('ReadLater')
       .insert([
         {  bookTitle: title,bookId:id,bookThumbnail:cover,description:desc,bookAuthor:author,uid:uid },
-        // {  bookTitle: title,bookId:id,bookThumbnail:cover,description:desc,bookAuthor:author,category:'Time Management'},
+      //  {title:title,qoute:"Failure isn’t a necessary evil. In fact, it isn’t evil at all. It is a necessary consequence of doing something new",
+      //   author:author,cover:cover,banner_color:'red',button_color:'blue',bookId:id,bookThumbnail:cover,description:desc
+      //  }
+        // {  bookTitle: title,bookId:id,bookThumbnail:cover,description:desc,bookAuthor:author,category:'banner'},
       ])
       .select()
       getLibrary()
+    }catch(e){
+      console.log(e)
+    }
 
 
       }

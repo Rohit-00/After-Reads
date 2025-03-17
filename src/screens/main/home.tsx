@@ -28,7 +28,7 @@ export default function Home({navigation}:any) {
       
         <ScrollView horizontal={false} contentContainerStyle={{ paddingBottom: 160 }} showsVerticalScrollIndicator={false}>
 
-        <Banner />
+        <Banner navigation={navigation}/>
 
 
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
