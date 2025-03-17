@@ -10,7 +10,7 @@ import { Text } from 'react-native';
 import  Constants  from 'expo-constants';
 import { colors } from '../../../utils/colors';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API!);
+const genAI = new GoogleGenerativeAI(Constants.expoConfig?.extra!.GOOGLE_GEMINI_API_KEY)
 
 
 export default function Reader({route,navigation}:any){
