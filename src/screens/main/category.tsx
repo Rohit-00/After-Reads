@@ -25,7 +25,7 @@ const Category = ({route,navigation}:any) => {
     <View>
    <View style={styles.headingContainer}>
       <TouchableOpacity style={styles.back} onPress={()=>navigation.goBack()}>
-        <Icon name='arrow-back' size={24} />
+        <Icon name='arrow-back' size={24} color={colors.text}/>
       </TouchableOpacity>
       <Text style={styles.heading}>{category}</Text>
     </View>
@@ -33,7 +33,7 @@ const Category = ({route,navigation}:any) => {
      <View style={styles.container}>
       {loading?
       <View style={{height:'100%'}}>
-      <SkeletonPlaceholder>
+      <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
         <View style={{flexDirection:'column',height:'100%'}}>
         <View style={{flexDirection:'row',alignItems:'center',marginLeft:10,justifyContent:'center'}}>
         <View style={{height:250,width:170,margin:20}}/>
@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
     heading:{
         fontSize:20,
         marginHorizontal:10 ,
+        color:colors.text
         
        
      
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
         paddingBottom: 150, // Increased bottom padding
       },
       container:{
-        backgroundColor:colors.background,
+        backgroundColor:colors.secondBackground,
         
       },
       headingContainer:{
@@ -128,7 +129,8 @@ const styles = StyleSheet.create({
       },
       bookAuthor:{
         fontSize:12,
-        textAlign:'center'
+        textAlign:'center',
+        color:colors.text
       },
     title:{
       color:colors.text,

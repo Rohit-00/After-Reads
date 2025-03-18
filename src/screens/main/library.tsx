@@ -33,7 +33,7 @@ getLibrary()
       
       <View style={{backgroundColor:colors.background,height:'100%'}}>
         {loading?
-        <SkeletonPlaceholder>
+        <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
           <View style={{flexDirection:'column',height:'100%'}}>
           <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
           <View style={{width:'40%',height:240,borderRadius:6,margin:20}}/>

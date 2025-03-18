@@ -22,7 +22,7 @@ export default function Home({navigation}:any) {
   
     return (
       
-      <View style={{backgroundColor:'#FAFAFA'}}>
+      <View style={{backgroundColor:colors.secondBackground}} >
         <View style={styles.headingContainer}><Text style={styles.heading}>After Reads</Text></View>
       {/* <StatusBar barStyle='default' backgroundColor={'white'}></StatusBar> */}
       
@@ -60,11 +60,10 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
   },
   headingContainer:{
-    backgroundColor:'white',
+    backgroundColor:colors.background,
     paddingHorizontal:10,
     paddingVertical:20,
-    borderBottomWidth:1,
-    borderBottomColor:colors.border
+
     
 
   },
@@ -72,13 +71,14 @@ const styles = StyleSheet.create({
       flexDirection:'row'
     },
     link:{
+      color:colors.text,
       fontSize:14,
       marginHorizontal:9,
       fontWeight:'500',
-      backgroundColor:colors.secondBackground,
+      backgroundColor:colors.background,
       padding:12,
       borderRadius:25,
-      borderWidth:1,
+  
       borderColor:colors.border
     }
 })

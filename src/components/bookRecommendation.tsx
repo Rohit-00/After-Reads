@@ -26,7 +26,7 @@ export default function BookRecommendations({heading,navigation}:any){
     {loading?
     
       <View>
-        <SkeletonPlaceholder>
+        <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
           <View style={{flexDirection:'row',alignItems:'center',marginLeft:10}}>
             <View style={{width:130,height:200,borderRadius:6,margin:5}}/>
             <View style={{width:130,height:200,borderRadius:6,margin:5}}/>
@@ -80,11 +80,10 @@ const styles = StyleSheet.create({
     
   },
   heading:{
-    color:'black',
+    color:colors.text,
     fontSize:20,
     margin:5,
     fontWeight:'bold',
-    opacity:0.80,
     marginBottom:10,
     marginHorizontal:20,
     marginTop:15
@@ -97,6 +96,7 @@ const styles = StyleSheet.create({
   },
   bookAuthor:{
     fontSize:12,
-    textAlign:'center'
+    textAlign:'center',
+    color:colors.text
   }
 });

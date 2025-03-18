@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Appearance, StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from '@expo/vector-icons/Ionicons';
@@ -23,6 +23,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider, useAuth } from './store/authContext';
 import { BookmarkContextProvider } from './store/bookmarkContextProvider';
 import Banner from './src/components/banner';
+import { colors } from './utils/colors';
+
+
+console.log(Appearance.getColorScheme())
 
 
 const Stack = createNativeStackNavigator()
@@ -35,9 +39,11 @@ const MainTabNavigator = () => {
         tabBarStyle:{
           height:60,
           position:'absolute',
+          backgroundColor:colors.secondBackground,
           margin:5,   
           borderRadius:24,
           borderWidth:0,
+          borderTopWidth:0,
           marginBottom:10,
           paddingTop:10,
         },
@@ -48,17 +54,17 @@ const MainTabNavigator = () => {
     }>
 
 <Tab.Screen name='Home' component={Home} options={{headerShown:false, tabBarIcon:({focused,size}:any)=>
-            (focused?<Icon name='home' size={size} color={'#00C896'}></Icon>:<Icon name='home-outline' size={size}></Icon>)
+            (focused?<Icon name='home' size={size} color={'#00C896'}></Icon>:<Icon name='home-outline' color={colors.text} size={size}></Icon>)
           }} />
 <Tab.Screen name='Search' component={Search} options={{headerShown:false, tabBarIcon:({focused,size}:any)=>
-            (focused?<Icon name='search' size={size} color={'#00C896'}></Icon>:<Icon name='search-outline' size={size}></Icon>)
+            (focused?<Icon name='search' size={size} color={'#00C896'}></Icon>:<Icon name='search-outline' color={colors.text} size={size}></Icon>)
           }} />
           
 <Tab.Screen name='Library' component={Library} options={{headerShown:false, tabBarIcon:({focused,size}:any)=>
-            (focused?<Icon name='bookmark' size={size} color={'#00C896'}></Icon>:<Icon name='bookmark-outline' size={size}></Icon>)
+            (focused?<Icon name='bookmark' size={size} color={'#00C896'}></Icon>:<Icon name='bookmark-outline' color={colors.text} size={size}></Icon>)
           }} />
 <Tab.Screen name='Profile' component={Profile} options={{headerShown:false, tabBarIcon:({focused,size}:any)=>
-            (focused?<Icon name='person' size={size} color={'#00C896'}></Icon>:<Icon name='person-outline' size={size}></Icon>)
+            (focused?<Icon name='person' size={size} color={'#00C896'}></Icon>:<Icon name='person-outline' color={colors.text} size={size}></Icon>)
           }} />
 
     </Tab.Navigator>

@@ -14,6 +14,7 @@ export default function Search({navigation}:any) {
       <View style={styles.searchContainer} >
       <Icon name='search' size={24} color='white' style={styles.searchIcon} />
         <TextInput
+        placeholderTextColor={colors.text}
         style={styles.searchInput}
         placeholder='Search Book, Author'
         onPress={()=>navigation.push('Search2')}
@@ -37,12 +38,13 @@ const styles = StyleSheet.create({
     fontWeight:'bold'
   },
   container:{
-    
-    marginHorizontal:10
+    flex:1,
+    backgroundColor:colors.secondBackground,
+    paddingHorizontal:10
   },
   
   searchContainer:{
-   backgroundColor:colors.secondBackground,
+   backgroundColor:colors.background,
    paddingHorizontal:10,
    flexDirection:'row', 
    marginTop:'7%',

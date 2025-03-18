@@ -1,5 +1,7 @@
 import { useEffect, useState} from 'react';
 import { Text, StyleSheet, View, TextInput, TouchableOpacity,ScrollView } from 'react-native';
+import AntDesign from '@expo/vector-icons/AntDesign';
+
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -10,6 +12,7 @@ import * as Yup from 'yup';
 import { Formik, FormikValues } from 'formik';
 
 import { authService, supabase } from '../../../utils/supabase';
+import { colors } from '../../../utils/colors';
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -84,10 +87,10 @@ const handleGoogleSignIn = async () => {
 
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always" contentContainerStyle={{flex:1,justifyContent:'center'}}>
+    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always" contentContainerStyle={{flex:1,justifyContent:'center',backgroundColor:colors.secondBackground,}}>
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-      <Text style={styles.title}>Sign In</Text>
+      <Text style={styles.title}>Sign Up</Text>
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
@@ -111,6 +114,7 @@ const handleGoogleSignIn = async () => {
             }
 
             <TextInput
+            
               style={[styles.input, touched.password && errors.password && styles.inputError]}
               placeholder="Password"
               secureTextEntry
@@ -125,6 +129,7 @@ const handleGoogleSignIn = async () => {
 
             <TextInput
               style={[styles.input, touched.confirmPassword && errors.confirmPassword && styles.inputError]}
+              
               placeholder="Confirm Password"
               secureTextEntry
               autoCapitalize="none"
@@ -140,7 +145,7 @@ const handleGoogleSignIn = async () => {
         )}
       </Formik>
       
-      <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}><Text style={{textDecorationLine:'underline'}}>Already have an account? Sign In</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('SignIn')}><Text style={{textDecorationLine:'underline',color:colors.text}}>Already have an account? Sign In</Text></TouchableOpacity>
       </View>
       <View style={styles.horizontalLineContainer}>
         <View style={styles.line} />
@@ -150,6 +155,7 @@ const handleGoogleSignIn = async () => {
 
       <View style={styles.socialContainer}>
       <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignIn}>
+        <AntDesign name="google" size={24} color={colors.text} />
         <Text style={styles.googleText}>Sign In with Google</Text>
       </TouchableOpacity>
       
@@ -161,7 +167,7 @@ const handleGoogleSignIn = async () => {
 
 const styles = StyleSheet.create({
   container: {
-   
+    backgroundColor:colors.secondBackground,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
@@ -177,8 +183,8 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   title: {
-    opacity:0.65,
-    color:'black',
+
+    color:colors.text,
     fontSize: 32,
     fontWeight:'bold',
     marginBottom: 16,
@@ -198,10 +204,11 @@ const styles = StyleSheet.create({
   input: {
     width: '85%',
     padding: 10,
+    height:45,
     paddingHorizontal:15,
     marginVertical: 8,
-    borderRadius: 30,
-    backgroundColor:'white',
+    borderRadius: 100,
+    backgroundColor:colors.input,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.20,
@@ -214,9 +221,11 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     width:300,
     textAlign:'center',
-    padding:15,
     fontSize:14,
-    
+    flexDirection:"row",
+    alignItems:'center',
+    justifyContent:'center',
+    gap:10,
     fontWeight:'600',
     height:50,
     borderRadius:30,

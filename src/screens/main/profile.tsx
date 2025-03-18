@@ -46,7 +46,7 @@ const Profile: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:colors.background,
+    backgroundColor:colors.secondBackground,
   },
   header: {
     padding: 16,
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   profileName: {
     fontSize: 24,
     fontWeight: 'bold',
+    color:colors.text
   },
   profileSubtitle: {
     fontSize: 16,

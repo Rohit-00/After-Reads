@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Text, StyleSheet, View, TouchableOpacity, Image} from 'react-native'
 import { supabase } from '../../utils/supabase'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
+import { colors } from '../../utils/colors'
 
 
 export default function Banner({navigation}:any) {
@@ -32,7 +33,7 @@ export default function Banner({navigation}:any) {
     return (
       <>
       {loading?
-      <SkeletonPlaceholder>
+      <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
                   <View style={{width:'90%',height:200,borderRadius:6,margin:20}}/>
     
       </SkeletonPlaceholder>

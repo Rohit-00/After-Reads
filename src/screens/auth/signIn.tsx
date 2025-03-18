@@ -1,5 +1,6 @@
 import { useEffect, useState} from 'react';
 import { Text, StyleSheet, View, TextInput, TouchableOpacity,ScrollView } from 'react-native';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import {
   GoogleSignin,
   GoogleSigninButton,
@@ -72,10 +73,10 @@ const handleGoogleSignIn = async () => {
   };
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always" contentContainerStyle={{flex:1,justifyContent:'center'}}>
+    <ScrollView showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="always" contentContainerStyle={{flex:1,justifyContent:'center',}}>
     <View style={styles.container}>
       <View style={styles.inputContainer}>
-      <Text style={styles.title}>Sign Up</Text>
+      <Text style={styles.title}>Sign In</Text>
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <Formik
         initialValues={{ email: '', password: '', confirmPassword: '' }}
@@ -116,7 +117,7 @@ const handleGoogleSignIn = async () => {
         )}
       </Formik>
       
-      <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={{textDecorationLine:'underline'}}>Don't have an account? Sign Up</Text></TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}><Text style={{textDecorationLine:'underline',color:colors.text}}>Don't have an account? Sign Up</Text></TouchableOpacity>
       </View>
       <View style={styles.horizontalLineContainer}>
         <View style={styles.line} />
@@ -127,6 +128,7 @@ const handleGoogleSignIn = async () => {
       <View style={styles.socialContainer}>
      
       <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignIn}>
+      <AntDesign name="google" size={24} color={colors.text} />
         <Text style={styles.googleText}>Sign In with Google</Text>
       </TouchableOpacity>
 
@@ -139,7 +141,7 @@ const handleGoogleSignIn = async () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor:colors.background,
+    backgroundColor:colors.secondBackground,
     height:'100%',
     width:'100%',
     justifyContent: 'center',
@@ -157,7 +159,6 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   title: {
-    opacity:0.65,
     color:colors.text,
     fontSize: 32,
     fontWeight:'bold',
@@ -181,7 +182,8 @@ const styles = StyleSheet.create({
     paddingHorizontal:15,
     marginVertical: 8,
     borderRadius: 30,
-    backgroundColor:colors.secondBackground,
+    height:45,
+    backgroundColor:colors.input,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.20,
@@ -194,8 +196,12 @@ const styles = StyleSheet.create({
     backgroundColor:'white',
     width:300,
     textAlign:'center',
-    padding:15,
+    
     fontSize:14,
+    flexDirection:"row",
+    alignItems:'center',
+    justifyContent:'center',
+    gap:10,
     
     fontWeight:'600',
     height:50,

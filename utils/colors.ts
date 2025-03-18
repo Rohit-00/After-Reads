@@ -1,20 +1,24 @@
 import { Appearance } from "react-native";
-
 const theme = {
     dark: {
-        text: 'white',
+        text: '#ffffff',
         background: '#121212',
-        secondBackground: '#23252D',
-        
+        secondBackground: '#1A1A1A',
         primary: '#00C896',
-        border: '#5E5E5E'
+        border: '#5E5E5E',
+        skeletonBackground: '#1A1A1A',
+        skeletonHighlight: '#333333',
+        input:'white',
     },
     light: {
-        text: 'black',
-        secondBackground:'white',
-        background: '#FAFAFA',
+        input:'white',
+        text: '#000000',
+        secondBackground:'#F7F7F7',
+        background: 'white',
         primary: '#00C896',
-        border: '#dbdbdb'    
+        border: '#dbdbdb',
+        skeletongBackground: '#F7F7F7',
+        skeletonHighlight: '#E0E0E0'
 
     }
   };

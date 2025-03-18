@@ -110,7 +110,7 @@ export default function Reader({route,navigation}:any){
         </View>
         <ScrollView style={{ flex:1,height:'100%'}}>
         {loading?
-        <SkeletonPlaceholder>
+        <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
         <View style={{flexDirection:'column',alignItems:'flex-start',margin:10,height:'100%'}}>
        <View style={{width:'70%',height:40,marginVertical:5}}/>
        <View style={{width:'100%',height:20,marginVertical:5}}/>
@@ -137,11 +137,6 @@ export default function Reader({route,navigation}:any){
        <View style={{width:'100%',height:20,marginVertical:5}}/>
        <View style={{width:'100%',height:20,marginVertical:5}}/>
        <View style={{width:'100%',height:20,marginVertical:5}}/>
-
-   
-
-          
-          
         </View>
         </SkeletonPlaceholder>
        //What a mess
@@ -163,21 +158,22 @@ const styles = StyleSheet.create({
     title:{
       fontSize:32,
       paddingTop:20,
-      lineHeight:30
+      lineHeight:30,
+      color:colors.text
       
     },
     author:{
       color:'#00C896'
     },
     body:{
-      
+      color:colors.text
     },
     heading2:{
       
       fontSize:20
     },
     container:{
-      marginHorizontal:10,
+      paddingHorizontal:10,
       flex:1,
       backgroundColor:colors.secondBackground
     },

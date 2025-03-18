@@ -1,4 +1,5 @@
 import { Text, StyleSheet, View, Image, TouchableOpacity, useColorScheme} from 'react-native'
+import { colors } from '../../../utils/colors';
 export default function Welcome({navigation}:any) {
     const colorScheme = useColorScheme();
     
@@ -9,7 +10,7 @@ export default function Welcome({navigation}:any) {
             
         },
         bodyText:{
-            color:'black',
+            color:colors.text,
             marginTop:10,
             fontSize:18,
             fontWeight:'bold',
@@ -43,7 +44,7 @@ export default function Welcome({navigation}:any) {
             height:'100%',
             width:'auto',
             alignItems:'center',
-            backgroundColor: colorScheme === 'dark' ? '#23252D' : '#F7F7F7'
+            backgroundColor: colors.background
            
             
         },

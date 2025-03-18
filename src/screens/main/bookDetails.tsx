@@ -56,7 +56,7 @@ export default function BookDetails({route,navigation}:any){
     const [loading, setLoading] = useState(true)
 
     const [showModal,setShowModal] = useState<boolean>(false)
-    const [colors,setColors] = useState<any>('')
+    const [color,setColors] = useState<any>('')
     const [cover,setBookCover] = useState<any>([])
     const [isSaved,setIsSaved] = useState<boolean>()
     const [selectedLanguage, setSelectedLanguage] = useState('English')
@@ -171,8 +171,8 @@ else{
       
       <View style={{backgroundColor:colors.secondBackground,height:'100%'}}>
         {loading?
-        <>
-          <SkeletonPlaceholder>
+      
+          <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
             <View style={{flexDirection:'column',height:'100%'}}>
             <View style={{height:300,width:'100%'}}/>
           
@@ -201,20 +201,20 @@ else{
             <View style={{width:'100%',height:20, margin:5}}/>
             </View>
           </SkeletonPlaceholder>
-        </>
+     
         :
         <View style={{backgroundColor:colors.secondBackground,height:'100%'}}>
-        <StatusBar backgroundColor={colors}></StatusBar>
+        <StatusBar backgroundColor={color}></StatusBar>
         <ScrollView
       
         showsVerticalScrollIndicator={false}
        >
        
-        <View style={{backgroundColor:colors}}>
+        <View style={{backgroundColor:color}}>
         <View style={[styles.back]}><TouchableOpacity onPress={()=>{navigation.pop()}} ><Icon name='chevron-back-outline' color='#00C896' size={38} /></TouchableOpacity></View>
         </View>
        
-          <View style={[styles.imageContainer,{backgroundColor:colors}]}>
+          <View style={[styles.imageContainer,{backgroundColor:color}]}>
         {cover?
         <Image
         source={{uri:(cover)}}
@@ -260,7 +260,7 @@ else{
         style={styles.closeButton} 
         onPress={() => setShowModal(false)}
       >
-        <Icon name="close" size={24} color="#000" />
+        <Icon name="close" size={24} color={colors.text} />
       </TouchableOpacity>
       <Text style={styles.modalHeader}>Choose a language</Text>
       <ScrollView style={styles.modalBody}>
@@ -282,7 +282,7 @@ else{
 </Modal>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.author}>{author}, </Text>
-            <Markdown>
+            <Markdown style={styles}>
               {desc}
             </Markdown>
         </View>
@@ -360,7 +360,8 @@ const styles = StyleSheet.create({
     },
     buttonLabel:{
       textAlign:'center',
-      fontSize:12
+      fontSize:12,
+      color:colors.text
     },
     readButton:{
       padding:12,
@@ -390,7 +391,8 @@ const styles = StyleSheet.create({
     },
     title:{
       fontSize:26,
-      fontWeight:'bold'
+      fontWeight:'bold',
+      color:colors.text
     },
     author:{
       fontSize:16,
@@ -398,11 +400,12 @@ const styles = StyleSheet.create({
     },
     description:{
       marginVertical:10,
-      fontSize:14
+      fontSize:14,
+      color:colors.text,
     },
     languageText:{
       fontSize:20,
-      
+      color:colors.text,
       fontWeight:'bold',
       textAlign:'center',
       
@@ -411,7 +414,8 @@ const styles = StyleSheet.create({
     modalHeader:{
       fontWeight:'bold',
       fontSize:20,
-      textAlign:'center'
+      textAlign:'center',
+      color:colors.text
     },
     languageContainer:{
       
@@ -420,7 +424,9 @@ const styles = StyleSheet.create({
 
 
     },
-// Add to existing styles
+    body: {
+      color:colors.text
+    },
 centeredView: {
   flex: 1,
   justifyContent: 'center',
@@ -428,7 +434,7 @@ centeredView: {
   backgroundColor: 'rgba(0, 0, 0, 0.5)'
 },
 modalView: {
-  backgroundColor: 'white',
+  backgroundColor: colors.background,
   borderRadius: 20,
   padding: 20,
   width: '90%',

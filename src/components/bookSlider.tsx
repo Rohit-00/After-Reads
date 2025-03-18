@@ -7,7 +7,7 @@ import { colors } from '../../utils/colors';
 export default function BookSlider({heading,data,navigation}:any){
 
   return (
-    <View>
+   
     <View style={styles.container}>
       <FlatList
         data={data}
@@ -32,7 +32,7 @@ export default function BookSlider({heading,data,navigation}:any){
         
       />
     </View>
-    </View>
+ 
   );
 }
 
@@ -41,6 +41,8 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'flex-start',
+    backgroundColor:colors.secondBackground,
+    flex:1
   },
   image: {
         width: 150,
@@ -68,7 +70,8 @@ const styles = StyleSheet.create({
   },
   bookAuthor:{
     fontSize:12,
-    textAlign:'center'
+    textAlign:'center',
+    color:colors.text
   },
 title:{
   color:colors.text,

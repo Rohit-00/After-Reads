@@ -63,24 +63,25 @@ const changeHttpToHttps = (obj: any): any => {
     return (
         
       <View style={styles.container}>
-      <StatusBar barStyle='default' backgroundColor={colors.secondBackground}></StatusBar>
+      <StatusBar barStyle='default' backgroundColor={colors.background}></StatusBar>
       <View style={styles.searchContainer} >
-      <TouchableOpacity onPress={()=>navigation.pop()} style={styles.backButton}><Icon2 name='left' size={24}  style={styles.searchIcon} /></TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.pop()} style={styles.backButton}><Icon2 name='left' color={colors.text} size={24}  style={styles.searchIcon} /></TouchableOpacity>
         <TextInput
+        placeholderTextColor={colors.text}
         autoFocus={true}
         onChangeText={setQuery}
         style={styles.searchInput}
         placeholder='Search Book, Author'
         onSubmitEditing={addSearch}
         />
-        <TouchableOpacity onPress={addSearch} style={styles.searchButton}><Icon name='search' size={24}  style={styles.searchIcon} /></TouchableOpacity>
+        <TouchableOpacity onPress={addSearch} style={styles.searchButton}><Icon name='search' size={24} color={colors.text} style={styles.searchIcon} /></TouchableOpacity>
         </View>
         
         <View style={styles.resultContainer}>
 
         {loading?
         <View>
-          <SkeletonPlaceholder>
+          <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
             <View style={{flexDirection:'column',margin:10}}>
               <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
               <View style={{width:'95%',height:120,borderRadius:6,margin:10}}/>
@@ -139,13 +140,14 @@ const styles = StyleSheet.create({
   },
   container:{
     flex:1,
+    backgroundColor:colors.secondBackground,
   },
   
   searchContainer:{
    flexDirection:'row', 
    justifyContent:'space-evenly',
    alignItems:'center',
-   backgroundColor:colors.secondBackground,
+   backgroundColor:colors.background,
    paddingBottom:10
   },
 
@@ -154,7 +156,8 @@ const styles = StyleSheet.create({
     height:50,
     paddingLeft:20,
     marginRight:10,
-    fontSize:16
+    fontSize:16,
+    color:colors.text
   },
   searchButton:{
     marginRight:10
