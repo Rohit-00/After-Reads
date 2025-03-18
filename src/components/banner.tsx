@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, TouchableOpacity, Image} from 'react-native'
 import { supabase } from '../../utils/supabase'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import { colors } from '../../utils/colors'
+import { changeHttpToHttps } from '../../utils/helpers'
 
 
 export default function Banner({navigation}:any) {
@@ -29,7 +30,6 @@ export default function Banner({navigation}:any) {
     }
     getBook()
   },[])
-  console.log(data[data.length-1])
     return (
       <>
       {loading?
@@ -50,7 +50,7 @@ export default function Banner({navigation}:any) {
         </View>
         <View>
           <Image 
-          source={{uri:(data[data.length-1].cover)}}
+          source={{uri:(changeHttpToHttps(data[data.length-1].cover))}}
           style={styles.bannerThumbnail}
           
           />

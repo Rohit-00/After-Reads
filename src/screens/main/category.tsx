@@ -2,7 +2,7 @@ import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react
 import React, { useEffect, useState } from 'react'
 import { supabase } from '../../../utils/supabase'
 import { colors } from '../../../utils/colors'
-import { truncateText } from '../../../utils/helpers'
+import { changeHttpToHttps, truncateText } from '../../../utils/helpers'
 import Icon from '@expo/vector-icons/Ionicons';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 
@@ -63,7 +63,7 @@ const Category = ({route,navigation}:any) => {
          <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>      
                    <TouchableOpacity onPress={()=>navigation.navigate('BookDetails',{thumbnail:item.bookThumbnail,id:item.bookId,title:item.bookTitle,author:item.bookAuthor,desc:item.description})}>
                    <View>
-                   <Image source={{ uri: item.bookThumbnail}} style={styles.image}/>
+                   <Image source={{ uri: changeHttpToHttps(item.bookThumbnail)}} style={styles.image}/>
                    </View>
                    </TouchableOpacity>
                    <View>

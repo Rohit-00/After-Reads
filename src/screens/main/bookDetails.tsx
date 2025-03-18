@@ -9,6 +9,7 @@ import { useAuth } from '../../../store/authContext';
 import ImageColors from 'react-native-image-colors';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { colors } from '../../../utils/colors';
+import { changeHttpToHttps } from '../../../utils/helpers';
 
 const languages = [{id:1,lang:'Arabic'},
   {id:2,lang:'Bengali'},
@@ -149,7 +150,6 @@ if(data?.length===0){
       console.log(e)
     }
 
-
       }
 else{
   setIsSaved(false) 
@@ -217,12 +217,12 @@ else{
           <View style={[styles.imageContainer,{backgroundColor:color}]}>
         {cover?
         <Image
-        source={{uri:(cover)}}
+        source={{uri:(changeHttpToHttps(cover))}}
         style={[styles.bookCover]} 
 
         />:
         <Image
-        source={{uri:(thumbnail)}}
+        source={{uri:(changeHttpToHttps(thumbnail))}}
         style={[styles.bookCover]} 
 
         />

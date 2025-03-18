@@ -7,6 +7,7 @@ import { supabase } from '../../../utils/supabase';
 import { Books } from '../../../types/types';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { colors } from '../../../utils/colors';
+import { changeHttpToHttps } from '../../../utils/helpers';
 export const truncateString = (str: string, maxLength: number): string => {
   if (str.length <= maxLength) {
     return str;
@@ -53,12 +54,7 @@ export default function Search2({navigation}:any) {
 
 
 
-const changeHttpToHttps = (obj: any): any => {
-    
-  // Base case for recursion: if the value is a string and contains 'http'
-  if (typeof obj === 'string' && obj.startsWith('http://')) {
-    return obj.replace('http://', 'https://');
-  }}        
+  
   
     return (
         

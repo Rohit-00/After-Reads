@@ -1,11 +1,10 @@
 import React from 'react';
 import { Text, StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
-import { truncateText } from '../../utils/helpers';
+import { changeHttpToHttps, truncateText } from '../../utils/helpers';
 import { colors } from '../../utils/colors';
 
 
 export default function BookSlider({heading,data,navigation}:any){
-
   return (
    
     <View style={styles.container}>
@@ -19,7 +18,7 @@ export default function BookSlider({heading,data,navigation}:any){
            <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>      
                               <TouchableOpacity onPress={()=>navigation.navigate('BookDetails',{thumbnail:item.bookThumbnail,id:item.bookId,title:item.bookTitle,author:item.bookAuthor,desc:item.description})}>
                               <View>
-                              <Image source={{ uri: item.bookThumbnail}} style={styles.image}/>
+                              <Image source={{ uri: changeHttpToHttps(item.bookThumbnail)}} style={styles.image}/>
                               </View>
                               </TouchableOpacity>
                               <View>
