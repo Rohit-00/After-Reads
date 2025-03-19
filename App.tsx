@@ -1,4 +1,4 @@
-import { Appearance, StyleSheet, Text} from 'react-native';
+import { ActivityIndicator, Appearance, StyleSheet, Text} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from '@expo/vector-icons/Ionicons';
@@ -23,9 +23,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider, useAuth } from './store/authContext';
 import { BookmarkContextProvider } from './store/bookmarkContextProvider';
 import { colors } from './utils/colors';
-
-
-console.log(Appearance.getColorScheme())
 
 
 const Stack = createNativeStackNavigator()
@@ -75,7 +72,7 @@ const StackNavigation = () => {
   const {user,isLoading} = useAuth();
 
 if(isLoading){
-  return <Text>Loading...</Text>
+  return <ActivityIndicator size='large' color={colors.primary} style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:colors.background}}/>
 }
 
 
