@@ -38,10 +38,10 @@ export default function BookSlider({heading,data,navigation}:any){
 const styles = StyleSheet.create({
  
   container: {
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    width:"100%",
+    height:'100%',
     backgroundColor:colors.secondBackground,
-    flex:1
+  
   },
   image: {
         width: 150,
@@ -83,6 +83,9 @@ textContainer:{
   
 },
   flatListContainer: {
-    paddingBottom: 120, // Increased bottom padding
+    paddingBottom: 120, 
+    alignItems:'center',
+    justifyContent:'center'
+    
   },
 });

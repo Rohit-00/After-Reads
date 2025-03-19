@@ -95,10 +95,14 @@ const styles = StyleSheet.create({
      
       },
       flatListContainer: {
-        paddingBottom: 150, // Increased bottom padding
+        paddingBottom: 150, 
+        alignItems:'center',
+        justifyContent:'center'
       },
       container:{
         backgroundColor:colors.secondBackground,
+
+        
         
       },
       headingContainer:{
