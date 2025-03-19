@@ -80,7 +80,7 @@ if(isLoading){
   <Stack.Navigator
      screenOptions={{
     headerShown: false,
-    animation:'default',}}>
+    animation:'none',}}>
      {user ? (
         <>
         <Stack.Screen name='Main' component={MainTabNavigator} options={{ headerShown: false }} />

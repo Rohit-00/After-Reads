@@ -94,12 +94,12 @@ export default function Welcome({navigation}:any) {
         </View>
         
         <View style={styles.buttonContainer}>
-        <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.replace('SignUp')}>
+        <TouchableOpacity activeOpacity={0.8} onPress={()=>navigation.navigate('SignUp')}>
             <Text style={styles.button}>
             Get Started
             </Text>
         </TouchableOpacity>
-        <TouchableOpacity activeOpacity={0.8} onPress={(()=>navigation.replace('SignIn'))}>
+        <TouchableOpacity activeOpacity={0.8} onPress={(()=>navigation.navigate('SignIn'))}>
             <Text style={styles.button2}>
             Already have an account
             </Text>

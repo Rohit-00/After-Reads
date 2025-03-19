@@ -11,7 +11,7 @@ export default function BookRecommendations({heading,navigation}:any){
     const [loading,setLoading] = useState(true)
     useEffect(()=>{
         const getLibrary = async() =>{
-          const {data,error} = await supabase.from('recommendations')
+          const {data} = await supabase.from('recommendations')
           .select('*')
           .eq('category',heading)
           setData(data)
@@ -20,7 +20,7 @@ export default function BookRecommendations({heading,navigation}:any){
     getLibrary()
       },[])
   return (
-    <View>
+    <View style={{marginVertical:10}}>
     <Text style={styles.heading}>{heading}</Text>
     <View style={styles.container}>
     {loading?
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: 130,
-    margin:5,
+    marginHorizontal:7,
     marginBottom:0,
     height: 200, 
     resizeMode: 'cover',
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     margin:5,
     fontWeight:'bold',
-    marginBottom:10,
+    marginBottom:15,
     marginHorizontal:20,
     marginTop:15
   },
