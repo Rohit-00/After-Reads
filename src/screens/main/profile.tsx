@@ -27,13 +27,14 @@ const Profile: React.FC = () => {
           style={styles.profileImage}
         />
         <Text style={styles.profileName}>Note From The Dev</Text>
-        <Text style={styles.profileSubtitle}>This is not a full fledged app, it's just my(Rohit) side project. 
+        <Text style={styles.profileSubtitle}>This is not a full fledged app, it's just my side project. So don't get upset when things 
+          stop working all of a sudden.
       You can follow me on X to get updates related to this or my another projects.</Text>
       </View>
       <View style={styles.menuSection}>
        
         <TouchableOpacity style={styles.menuItem} onPress={handlePress}>
-          <Text style={styles.menuItemText}>Follow me on X (Byironic)</Text>
+          <Text style={styles.menuItemText}>Follow me on X</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.menuItem} onPress={async()=>{await signOut()}}>
           <Text style={[styles.menuItemText]}>Log Out</Text>
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
   profileSubtitle: {
     fontSize: 16,
     color: '#888',
-    textAlign:'justify',
+    textAlign:'center',
     marginHorizontal:10
   },
   menuSection: {

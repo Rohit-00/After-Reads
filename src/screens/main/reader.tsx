@@ -108,7 +108,7 @@ export default function Reader({route,navigation}:any){
         <View style={styles.buttons}><TouchableOpacity onPress={refresh}><Icon2 name='refresh' color='#00C896' size={32} /></TouchableOpacity></View>
         </View>
         </View>
-        <ScrollView style={{ flex:1,height:'100%'}}>
+        <ScrollView style={{ flex:1,height:'100%'}} showsVerticalScrollIndicator={false}>
         {loading?
         <SkeletonPlaceholder backgroundColor={colors.secondBackground} highlightColor={colors.skeletonHighlight}>
         <View style={{flexDirection:'column',alignItems:'flex-start',margin:10,height:'100%'}}>
