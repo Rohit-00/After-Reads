@@ -66,14 +66,6 @@ export default function BookDetails({route,navigation}:any){
     const author = route.params.author
     const desc = route.params.desc
     const {user} = useAuth();
-    useEffect(() => {
-      const fetchColors = async () => {
-     
-      };
-      fetchColors();
-    
-    }, []);
-
 
     const id = route.params.id
     const uid = user!.id
@@ -82,7 +74,7 @@ export default function BookDetails({route,navigation}:any){
       
       const fetchBooks=async()=>{
           try{
-                const result = await ImageColors.getColors(thumbnail, {
+                const result = await ImageColors.getColors(changeHttpToHttps(thumbnail), {
                   fallback: '#fff',
                   cache:true,
                   key:thumbnail
@@ -102,7 +94,6 @@ export default function BookDetails({route,navigation}:any){
           const response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${id}`);
           const coverUrl = response.data.volumeInfo.imageLinks?.medium;
           setBookCover(coverUrl);
-          console.log(coverUrl)
 
         } catch (error) {
           console.error('Error fetching book cover:', error);
