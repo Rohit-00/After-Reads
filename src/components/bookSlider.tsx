@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, View, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
+import { Text, StyleSheet, View, FlatList, Image, TouchableOpacity } from 'react-native';
 import { changeHttpToHttps, truncateText } from '../../utils/helpers';
 import { colors } from '../../utils/colors';
 

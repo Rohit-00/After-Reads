@@ -1,4 +1,4 @@
-import React,{useCallback,useState} from 'react';
+import React,{useCallback} from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView,Linking,Alert } from 'react-native';
 import { useAuth } from '../../../store/authContext';
 import { colors } from '../../../utils/colors';

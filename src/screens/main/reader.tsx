@@ -1,5 +1,5 @@
-import {  StyleSheet, View, Pressable , TouchableOpacity,ScrollView} from 'react-native'
-import { useState, useEffect, lazy, Suspense } from 'react';
+import {  StyleSheet, View, TouchableOpacity,ScrollView} from 'react-native'
+import { useState, useEffect} from 'react';
 import Icon2 from '@expo/vector-icons/Ionicons';
 import {GoogleGenerativeAI} from '@google/generative-ai'
 

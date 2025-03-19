@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, lazy } from 'react'
+import React, { useEffect, useState } from 'react'
 import {  StyleSheet, View, TextInput, ScrollView, Image,  Pressable, TouchableOpacity, StatusBar, ActivityIndicator, Text} from 'react-native'
 import axios from 'axios';
 import Icon from '@expo/vector-icons/Feather';

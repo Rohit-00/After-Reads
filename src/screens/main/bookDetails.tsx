@@ -1,5 +1,5 @@
 import { Text, StyleSheet, View,  TouchableOpacity,  ScrollView, StatusBar, Image, Modal} from 'react-native'
-import { useEffect, useState, useRef, useContext} from 'react';
+import { useEffect, useState, useContext} from 'react';
 import Icon from '@expo/vector-icons/Ionicons';
 import axios from 'axios';
 import { supabase } from '../../../utils/supabase';

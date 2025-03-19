@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View,RefreshControl, TouchableOpacity,Button } from 'react-native'
+import { Text, StyleSheet, View } from 'react-native'
 import BookSlider from '../../components/bookSlider'
 import { useEffect, useState, useContext } from 'react'
 import { supabase } from '../../../utils/supabase'

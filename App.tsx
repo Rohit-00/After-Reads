@@ -1,4 +1,4 @@
-import { Appearance, StyleSheet, Text, View } from 'react-native';
+import { Appearance, StyleSheet, Text} from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from '@expo/vector-icons/Ionicons';
@@ -22,7 +22,6 @@ import Category from './src/screens/main/category';
 import { NavigationContainer } from '@react-navigation/native';
 import { AuthProvider, useAuth } from './store/authContext';
 import { BookmarkContextProvider } from './store/bookmarkContextProvider';
-import Banner from './src/components/banner';
 import { colors } from './utils/colors';
 
 
@@ -74,7 +73,6 @@ const MainTabNavigator = () => {
 const StackNavigation = () => {
 
   const {user,isLoading} = useAuth();
-  console.log("homeScreen:",user)
 
 if(isLoading){
   return <Text>Loading...</Text>

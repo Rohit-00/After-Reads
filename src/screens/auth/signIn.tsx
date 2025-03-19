@@ -3,9 +3,7 @@ import { Text, StyleSheet, View, TextInput, TouchableOpacity,ScrollView } from '
 import AntDesign from '@expo/vector-icons/AntDesign';
 import {
   GoogleSignin,
-  GoogleSigninButton,
   statusCodes,
-  User,
 } from '@react-native-google-signin/google-signin'
 import * as Yup from 'yup';
 import { Formik, FormikValues } from 'formik';

@@ -4,7 +4,6 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 
 import {
   GoogleSignin,
-  GoogleSigninButton,
   statusCodes,
 } from '@react-native-google-signin/google-signin'
 
