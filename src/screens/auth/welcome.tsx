@@ -69,14 +69,11 @@ export default function Welcome({navigation}:any) {
         button2:{
             fontSize:15,
             fontWeight:'bold',
-            color:colorScheme === 'dark' ? 'white' : 'black',
-            opacity:0.65,
+            color:colors.text,
             height:50,
             width:300,
             padding:15,
             textAlign:'center',
-            borderRadius:25,
-            backgroundColor:colorScheme === 'dark' ? 'white' : 'white',
             margin:10,
             marginTop:0    
         }

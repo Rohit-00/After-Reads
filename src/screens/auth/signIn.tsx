@@ -126,7 +126,7 @@ const handleGoogleSignIn = async () => {
       <View style={styles.socialContainer}>
      
       <TouchableOpacity style={styles.googleButton} onPress={handleGoogleSignIn}>
-      <AntDesign name="google" size={24} color={'white'} />
+      <AntDesign name="google" size={24} color={'black'} />
         <Text style={styles.googleText}>Sign In with Google</Text>
       </TouchableOpacity>
 
