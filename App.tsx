@@ -33,15 +33,11 @@ const MainTabNavigator = () => {
     <Tab.Navigator screenOptions={
       {
         tabBarStyle:{
-          height:60,
-          position:'absolute',
-          backgroundColor:colors.secondBackground,
-          margin:5,   
-          borderRadius:24,
+          backgroundColor:colors.background,
           borderWidth:0,
           borderTopWidth:0,
-          marginBottom:10,
           paddingTop:10,
+          height:60,
         },
         
         tabBarShowLabel:false
