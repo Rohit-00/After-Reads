@@ -38,15 +38,15 @@ export default function Banner({navigation}:any) {
     
       </SkeletonPlaceholder>
       :
-      <View style={styles.bannerBackground}>
+      <View style={[styles.bannerBackground,{backgroundColor:data[data.length-1].banner_color}]}>
         
         <View style={styles.bannerText}>
           <Text style={styles.bannerHeading}>Today's Read</Text>
           <Text style={styles.bannerBody}>{data[data.length-1].qoute}</Text>
           <Text style={styles.bannerAuthor}>-{data[data.length-1].author}</Text>
           <TouchableOpacity
-          onPress={()=>navigation.navigate('BookDetails',{thumbnail:data[data.length-1].bookThumbnail,id:data[data.length-1].bookId,title:data[data.length-1].bookTitle,author:data[data.length-1].bookAuthor,desc:data[data.length-1].description})}
-          ><Text style={styles.bannerButton}>Read</Text></TouchableOpacity>
+          onPress={()=>navigation.navigate('BookDetails',{thumbnail:data[data.length-1].bookThumbnail,id:data[data.length-1].bookId,title:data[data.length-1].title,author:data[data.length-1].author,desc:data[data.length-1].description})}
+          ><Text style={[styles.bannerButton,{backgroundColor:data[data.length-1].button_color}]}>Read</Text></TouchableOpacity>
         </View>
         <View>
           <Image 
@@ -64,9 +64,9 @@ export default function Banner({navigation}:any) {
 
 const styles = StyleSheet.create({
     bannerBackground:{
-        height:200,
-        backgroundColor:'#9E81FF',
-        margin:20,
+        padding:10,
+
+        margin:10,
         borderRadius:5,
         flexDirection:'row',
         justifyContent:'center',
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     },
     bannerText:{
       margin:10,
-      width:200,
+      width:'60%',
     },
     bannerHeading:{
       fontWeight:'bold',
