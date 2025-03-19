@@ -16,23 +16,15 @@ export const truncateString = (str: string, maxLength: number): string => {
 };
 
 export default function Search2({navigation}:any) {
-    const [query, setQuery] = useState('')
     const [keyword, setKeyword] = useState('')
     const [books, setBooks] = useState<Books[]>([])
     const [loading, setLoading] = useState<boolean>()
-    function addSearch(){
-      setKeyword(query)
-      setLoading(true)
-    }
 
-
-      useEffect(()=>{
           const fetchBooks=async()=>{
-          const {data,error} = await supabase.from('Credits')
-          .select('value')
-          .eq('name','googleBooks')
-          console.log(data?.at(0)?.value)
-          
+          if(keyword==='' || keyword===null){
+            return;
+          }
+          setLoading(true)
           axios 
           .get('https://www.googleapis.com/books/v1/volumes?q='+keyword)
           .then((res)=>(
@@ -43,19 +35,9 @@ export default function Search2({navigation}:any) {
             setLoading(false)
           })
           .catch((err:any)=>{console.log(err.message)})
-          }
-
-          fetchBooks()
-          
                
-},[keyword])
+}
 
-
-
-
-
-  
-  
     return (
         
       <View style={styles.container}>
@@ -65,12 +47,12 @@ export default function Search2({navigation}:any) {
         <TextInput
         placeholderTextColor={colors.text}
         autoFocus={true}
-        onChangeText={setQuery}
+        onChangeText={(text)=>setKeyword(text)}
         style={styles.searchInput}
         placeholder='Search Book, Author'
-        onSubmitEditing={addSearch}
+        onSubmitEditing={fetchBooks}
         />
-        <TouchableOpacity onPress={addSearch} style={styles.searchButton}><Icon name='search' size={24} color={colors.text} style={styles.searchIcon} /></TouchableOpacity>
+        <TouchableOpacity onPress={fetchBooks} style={styles.searchButton}><Icon name='search' size={24} color={colors.text} style={styles.searchIcon} /></TouchableOpacity>
         </View>
         
         <View style={styles.resultContainer}>
