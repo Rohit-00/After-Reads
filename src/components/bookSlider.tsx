@@ -37,29 +37,44 @@ export default function BookSlider({heading,data,navigation}:any){
 
 const styles = StyleSheet.create({
  
-  container: {
-    width:"100%",
-    height:'100%',
-    backgroundColor:colors.secondBackground,
-  
-  },
-  image: {
-        width: 150,
-        margin:30,
-        marginBottom:0,
-        height: 200, 
-        resizeMode: 'cover',
-        borderRadius:6,
-        borderWidth:0.5,
-        borderColor:colors.border,
-  },
   heading:{
-    color:'black',
     fontSize:20,
-    margin:5,
-    fontWeight:'bold',
-    opacity:0.80,
-    marginBottom:10
+    paddingHorizontal:10 ,
+    color:colors.text
+
+  },
+  flatListContainer: {
+    paddingBottom: 150, 
+    width:'100%',
+    
+  },
+  container:{
+    backgroundColor:colors.secondBackground,
+    paddingHorizontal:10,
+    alignItems:'center',
+    justifyContent:'center',
+    height:'100%'
+    
+  },
+  headingContainer:{
+    flexDirection:'row',
+    justifyContent:'flex-start',
+    alignItems:'center',
+    backgroundColor:colors.secondBackground,
+    padding:10,
+
+  },
+
+image: {
+    width: 150,
+    margin:20,
+    marginBottom:0,
+    height: 200, // Adjust the height as needed
+    resizeMode: 'cover',
+    borderRadius:6,
+    borderWidth:0.5,
+    borderColor:colors.border,
+   
   },
   bookTitle:{
     marginTop:5, 
@@ -82,10 +97,5 @@ textContainer:{
   alignItems:'center',
   
 },
-  flatListContainer: {
-    paddingBottom: 120, 
-    alignItems:'center',
-    justifyContent:'center'
-    
-  },
+
 });

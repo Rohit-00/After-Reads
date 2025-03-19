@@ -22,7 +22,7 @@ const Category = ({route,navigation}:any) => {
         getLibrary()
           },[])
   return (
-    <View>
+    <>
    <View style={styles.headingContainer}>
       <TouchableOpacity style={styles.back} onPress={()=>navigation.goBack()}>
         <Icon name='arrow-back' size={24} color={colors.text}/>
@@ -79,7 +79,7 @@ const Category = ({route,navigation}:any) => {
       }
      
       </View>
-    </View>
+    </>
   )
 }
 
@@ -88,21 +88,20 @@ export default Category
 const styles = StyleSheet.create({
     heading:{
         fontSize:20,
-        marginHorizontal:10 ,
+        paddingHorizontal:10 ,
         color:colors.text
-        
-       
-     
+
       },
       flatListContainer: {
         paddingBottom: 150, 
-        alignItems:'center',
-        justifyContent:'center'
+        width:'100%',
+        
       },
       container:{
         backgroundColor:colors.secondBackground,
-
-        
+        marginHorizontal:10,
+        alignItems:'center',
+        justifyContent:'center',
         
       },
       headingContainer:{
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
 
     image: {
         width: 150,
-        margin:30,
+        margin:20,
         marginBottom:0,
         height: 200, // Adjust the height as needed
         resizeMode: 'cover',
