@@ -24,13 +24,7 @@ export default function Reader({route,navigation}:any){
 
     
 
-    const storeData = async (id:any,value:any) => {
-      try {
-        await AsyncStorage.setItem(id, value);
-      } catch (e) {
-        console.log(e)
-      }
-    };
+
     
     const getData = async (id:string) => {
       try {
@@ -51,15 +45,15 @@ export default function Reader({route,navigation}:any){
       setLoading(true)
       run('Write a summary of the book'+title+'by'+author+".don't give an overview instead explain the whole book. Keep the summary detailed. And write it in"+language+"language")
     }
-    async function run(input:string) {
-  // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
+
+async function run(input:string) {
   try{
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
         const prompt = input
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
-        storeData(id,text)
+ 
 
         
         const { data, error } = await supabase

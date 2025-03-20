@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
       },
       container:{
         backgroundColor:colors.secondBackground,
-        marginHorizontal:10,
+        paddingHorizontal:10,
         alignItems:'center',
         justifyContent:'center',
         
