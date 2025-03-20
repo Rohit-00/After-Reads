@@ -25,16 +25,17 @@ export default function Search2({navigation}:any) {
             return;
           }
           setLoading(true)
-          axios 
-          .get('https://www.googleapis.com/books/v1/volumes?q='+keyword)
-          .then((res)=>(
-            
-           setBooks(res.data.items)))
-          
-          .then(()=>{
-            setLoading(false)
-          })
-          .catch((err:any)=>{console.log(err.message)})
+          try {
+            const response = await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + keyword);
+            const filteredBooks = response.data.items.filter((book: any) => 
+              book.volumeInfo?.imageLinks?.thumbnail
+            );
+            setBooks(filteredBooks);
+          } catch (err: any) {
+            console.log(err.message);
+          } finally {
+            setLoading(false);
+          }
                
 }
 
