@@ -46,13 +46,15 @@ const styles = StyleSheet.create({
   flatListContainer: {
     paddingBottom: 150, 
     width:'100%',
+    height:'100%',
     
   },
   container:{
     backgroundColor:colors.secondBackground,
-    paddingHorizontal:10,
     alignItems:'center',
     justifyContent:'center',
+    width:'100%',
+    paddingHorizontal:10,
     height:'100%'
     
   },
@@ -69,7 +71,7 @@ image: {
     width: 150,
     margin:20,
     marginBottom:0,
-    height: 200, // Adjust the height as needed
+    height: 200, 
     resizeMode: 'cover',
     borderRadius:6,
     borderWidth:0.5,
