@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
   flatListContainer: {
     paddingBottom: 150, 
     width:'100%',
-    height:'100%',
     
   },
   container:{

@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
         
       },
       container:{
+        flex:1,
         backgroundColor:colors.secondBackground,
         paddingHorizontal:10,
         alignItems:'center',
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
         width: 150,
         margin:20,
         marginBottom:0,
-        height: 200, // Adjust the height as needed
+        height: 200,
         resizeMode: 'cover',
         borderRadius:6,
         borderWidth:0.5,
