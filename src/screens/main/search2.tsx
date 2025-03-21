@@ -28,7 +28,7 @@ export default function Search2({navigation}:any) {
           try {
             const response = await axios.get('https://www.googleapis.com/books/v1/volumes?q=' + keyword);
             const filteredBooks = response.data.items.filter((book: any) => 
-              book.volumeInfo?.imageLinks?.thumbnail
+              book.volumeInfo?.imageLinks?.thumbnail && book.volumeInfo?.title && book.volumeInfo?.authors && book.volumeInfo?.description
             );
             setBooks(filteredBooks);
           } catch (err: any) {
@@ -75,7 +75,7 @@ export default function Search2({navigation}:any) {
   
         </View>
         :
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{marginBottom:50}}>
         
         {books.map((item:any)=>(<View key={item.id.toString()}>
         

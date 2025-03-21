@@ -1,32 +1,20 @@
 import { Text, StyleSheet, View, TouchableOpacity} from 'react-native'
 import Banner from '../../components/banner'
 import { ScrollView } from 'react-native'
-import { useState } from 'react'
 import BookRecommendations from '../../components/bookRecommendation'
 import { colors } from '../../../utils/colors'
 
-interface userData {
-  _data:{
-    credits:number,
-    uid: String
-  }
-}
 export type bookSliderParamList={
   BookSlider:{title:string}
 }
 export default function Home({navigation}:any) {
-
-  const [datad, setData] = useState<any>()
-
-
   
     return (
       
       <View style={{backgroundColor:colors.secondBackground}} >
         <View style={styles.headingContainer}><Text style={styles.heading}>After Reads</Text></View>
-      {/* <StatusBar barStyle='default' backgroundColor={'white'}></StatusBar> */}
       
-        <ScrollView horizontal={false} contentContainerStyle={{ paddingBottom: 160 }} showsVerticalScrollIndicator={false}>
+        <ScrollView horizontal={false} contentContainerStyle={{ paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
 
         <Banner navigation={navigation}/>
 
@@ -42,6 +30,7 @@ export default function Home({navigation}:any) {
         </ScrollView>
         <BookRecommendations heading={'Productivity'} navigation={navigation}/>
         <BookRecommendations heading={'Enhance Creativity'} navigation={navigation}/>
+        <BookRecommendations heading={'Philosophy'} navigation={navigation}/>
        
         
         </ScrollView>
