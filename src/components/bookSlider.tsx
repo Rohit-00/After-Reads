@@ -15,7 +15,7 @@ export default function BookSlider({heading,data,navigation}:any){
         showsVerticalScrollIndicator={false}
         keyExtractor={(item) => item.bookId}
         renderItem={({ item }) => (
-           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>      
+           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center',margin:20}}>      
                               <TouchableOpacity onPress={()=>navigation.navigate('BookDetails',{thumbnail:item.bookThumbnail,id:item.bookId,title:item.bookTitle,author:item.bookAuthor,desc:item.description})}>
                               <View>
                               <Image source={{ uri: changeHttpToHttps(item.bookThumbnail)}} style={styles.image}/>
@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
   container:{
     backgroundColor:colors.secondBackground,
     alignItems:'center',
-    justifyContent:'center',
     width:'100%',
     paddingHorizontal:10,
     height:'100%'
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
 
 image: {
     width: 150,
-    margin:20,
+
     marginBottom:0,
     height: 200, 
     resizeMode: 'cover',
