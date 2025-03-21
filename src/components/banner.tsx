@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         margin:10,
         borderRadius:5,
         flexDirection:'row',
-        justifyContent:'center',
+        justifyContent:'space-evenly',
         alignItems:'center'
     },
     bannerText:{
@@ -95,7 +95,8 @@ const styles = StyleSheet.create({
       textAlign:'center',
       borderRadius:25,
       color:'white',
-      marginTop:10
+      marginTop:10,
+      width:100
       
     },
     bannerThumbnail:{

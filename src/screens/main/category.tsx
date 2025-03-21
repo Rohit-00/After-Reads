@@ -56,21 +56,34 @@ const Category = ({route,navigation}:any) => {
       data={datad}
       keyExtractor={(item) => item.bookId}
       numColumns={2}
-      contentContainerStyle={styles.flatListContainer}
+      contentContainerStyle={{
+        paddingBottom: 150,
+        alignItems: 'center'
+      }}
+      columnWrapperStyle={{
+        justifyContent: 'space-evenly',
+        width: '100%'
+      }}
       showsVerticalScrollIndicator={false}
       renderItem={({ item }) => (
        
-         <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center',margin:20}}>      
-                   <TouchableOpacity onPress={()=>navigation.navigate('BookDetails',{thumbnail:item.bookThumbnail,id:item.bookId,title:item.bookTitle,author:item.bookAuthor,desc:item.description})}>
-                   <View>
-                   <Image source={{ uri: changeHttpToHttps(item.bookThumbnail)}} style={styles.image}/>
-                   </View>
-                   </TouchableOpacity>
-                   <View>
-                   <Text style={styles.bookTitle}>{truncateText(item.bookTitle,20)}</Text>
-                   <Text style={styles.bookAuthor}>{item.bookAuthor}</Text>
-                     </View>
-                   </View>
+        <View style={styles.itemContainer}>      
+        <TouchableOpacity onPress={()=>navigation.navigate('BookDetails',{
+          thumbnail: item.bookThumbnail,
+          id: item.bookId,
+          title: item.bookTitle,
+          author: item.bookAuthor,
+          desc: item.description
+        })}>
+          <View>
+            <Image source={{ uri: changeHttpToHttps(item.bookThumbnail)}} style={styles.image}/>
+          </View>
+        </TouchableOpacity>
+        <View>
+          <Text style={styles.bookTitle}>{truncateText(item.bookTitle,20)}</Text>
+          <Text style={styles.bookAuthor}>{item.bookAuthor}</Text>
+        </View>
+      </View>
               
       
       )}
@@ -97,13 +110,10 @@ const styles = StyleSheet.create({
         width:'100%',
         
       },
-      container:{
-        flex:1,
-        backgroundColor:colors.secondBackground,
-        alignItems:'center',
-        width:'100%',
-        paddingHorizontal:10,
-        
+      container: {
+        flex: 1,
+        backgroundColor: colors.secondBackground,
+        width: '100%',
       },
       headingContainer:{
         flexDirection:'row',
@@ -112,6 +122,13 @@ const styles = StyleSheet.create({
         backgroundColor:colors.secondBackground,
         padding:10,
 
+      },
+      itemContainer: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 10,
+        width: '45%', 
       },
 
     image: {

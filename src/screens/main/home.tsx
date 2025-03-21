@@ -3,6 +3,7 @@ import Banner from '../../components/banner'
 import { ScrollView } from 'react-native'
 import BookRecommendations from '../../components/bookRecommendation'
 import { colors } from '../../../utils/colors'
+import { StatusBar } from 'expo-status-bar'
 
 export type bookSliderParamList={
   BookSlider:{title:string}
@@ -13,7 +14,6 @@ export default function Home({navigation}:any) {
       
       <View style={{backgroundColor:colors.secondBackground}} >
         <View style={styles.headingContainer}><Text style={styles.heading}>After Reads</Text></View>
-      
         <ScrollView horizontal={false} contentContainerStyle={{ paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
 
         <Banner navigation={navigation}/>
