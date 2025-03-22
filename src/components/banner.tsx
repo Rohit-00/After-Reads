@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
       fontSize:24,
     },
     bannerBody:{
-      
       fontSize:14
     },
     bannerAuthor:{

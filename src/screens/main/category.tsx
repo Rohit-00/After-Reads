@@ -61,7 +61,7 @@ const Category = ({route,navigation}:any) => {
         alignItems: 'center'
       }}
       columnWrapperStyle={{
-        justifyContent: 'space-evenly',
+        justifyContent: 'flex-start',
         width: '100%'
       }}
       showsVerticalScrollIndicator={false}
@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: colors.secondBackground,
         width: '100%',
+        
       },
       headingContainer:{
         flexDirection:'row',

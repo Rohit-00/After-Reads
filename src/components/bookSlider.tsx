@@ -16,7 +16,7 @@ export default function BookSlider({data,navigation}:any){
           alignItems: 'center'
         }}
         columnWrapperStyle={{
-          justifyContent: 'space-evenly',
+          justifyContent: 'flex-start',
           width: '100%'
         }}
         showsVerticalScrollIndicator={false}
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   flatListContainer: {
     paddingBottom: 150, 
     width:'100%',
+    backgroundColor:'red',
     
   },
   container: {
